@@ -1,4 +1,5 @@
 package construtores;
+
 public class Carro extends Veiculo {
     private int numeroPassageiros;
     private int numeroPortas;
@@ -72,10 +73,10 @@ public class Carro extends Veiculo {
 
     @Override
     public String toString() {
-        return "Carro: " + super.toString() 
-            + ", Número de Passageiros: " + numeroPassageiros 
-              + ", Número de Portas: " + numeroPortas 
-                + ", Quilômetros por Litro: " + kmPlt 
-                  + ", Ar Condicionado: " + arCond;
+        return "Carro: " + super.toString()
+                + ", Número de Passageiros: " + numeroPassageiros
+                + ", Número de Portas: " + numeroPortas
+                + ", Quilômetros por Litro: " + kmPlt
+                + ", Ar Condicionado: " + arCond;
     }
 }
