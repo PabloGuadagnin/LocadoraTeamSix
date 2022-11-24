@@ -43,23 +43,43 @@ public class Cliente {
 
     // setters
     public void setNome(String nome) {
-        this.nome = nome;
+        try {
+            this.nome = nome;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com um nome válido.");
+        }
     }
 
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        try {
+            this.cpf = cpf;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com um CPF válido.");
+        }
     }
 
     public void setCnh(String cnh) {
-        this.cnh = cnh;
+        try {
+            this.cnh = cnh;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com uma CNH válida.");
+        }
     }
 
     public void setEndereco(String endereco) {
-        this.endereco = endereco;
+        try {
+            this.endereco = endereco;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com um endereço válido.");
+        }
     }
 
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        try {
+            this.telefone = telefone;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com um telefone válido.");
+        }
     }
 
     public String toString() {

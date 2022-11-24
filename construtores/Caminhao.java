@@ -22,11 +22,19 @@ public class Caminhao extends Veiculo {
 
     // setters
     public void setNumeroEixos(int numeroEixos) {
-        this.numeroEixos = numeroEixos;
+        try {
+            this.numeroEixos = numeroEixos;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com um número válido.");
+        }
     }
 
     public void setCargaMax(int cargaMax) {
-        this.cargaMax = cargaMax;
+        try {
+            this.cargaMax = cargaMax;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com um valor válido.");
+        }
     }
 
     public String toString() {

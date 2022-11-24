@@ -26,7 +26,11 @@ public class Carro extends Veiculo {
      * @param numeroPassageiros Seta o número de passageiros do veículo
      */
     public void setNumeroPassageiros(int numeroPassageiros) {
-        this.numeroPassageiros = numeroPassageiros;
+        try {
+            this.numeroPassageiros = numeroPassageiros;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com um número válido.");
+        }
     }
 
     /**
@@ -40,7 +44,11 @@ public class Carro extends Veiculo {
      * @param numeroPortas Seta o número de portas do veículo
      */
     public void setNumeroPortas(int numeroPortas) {
-        this.numeroPortas = numeroPortas;
+        try {
+            this.numeroPortas = numeroPortas;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com um número válido.");
+        }
     }
 
     /**
@@ -54,7 +62,11 @@ public class Carro extends Veiculo {
      * @param kmPlt Seta a média de km por litro do veículo
      */
     public void setKmPlt(double kmPlt) {
-        this.kmPlt = kmPlt;
+        try {
+            this.kmPlt = kmPlt;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com um valor válido.");
+        }
     }
 
     /**

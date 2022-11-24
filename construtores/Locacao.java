@@ -46,7 +46,11 @@ public class Locacao {
 
     // setters
     public void setCodigoLocacao(int codigoLocacao) {
-        this.codigoLocacao = codigoLocacao;
+        try {
+            this.codigoLocacao = codigoLocacao;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com um valor válido.");
+        }
     }
 
     public void setCliente(Cliente cliente) {
@@ -62,11 +66,19 @@ public class Locacao {
     }
 
     public void setDataInicial(int dataInicial) {
-        this.dataInicial = dataInicial;
+        try {
+            this.dataInicial = dataInicial;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com uma data válida.");
+        }
     }
 
     public void setDataFinal(int dataFinal) {
-        this.dataFinal = dataFinal;
+        try {
+            this.dataFinal = dataFinal;
+        } catch (Exception e) {
+            System.out.println("Ocorreu o erro " + e + " entre com uma data válida.");
+        }
     }
 
     public String toString() {

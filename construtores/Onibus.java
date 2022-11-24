@@ -34,7 +34,11 @@ public class Onibus extends Veiculo {
 
   // setters
   public void setNumeroPassageiros(int numeroPassageiros) {
-    this.numeroPassageiros = numeroPassageiros;
+    try {
+      this.numeroPassageiros = numeroPassageiros;
+    } catch (Exception e) {
+      System.out.println("Ocorreu o erro " + e + " entre com um valor válido.");
+    }
   }
 
   public void setCategoria(String categoria) {
