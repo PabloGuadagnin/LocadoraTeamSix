@@ -27,22 +27,17 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="botaoLocacao" layoutX="330.0" layoutY="233.0" mnemonicParsing="false" onAction="#cadastrarLocacao" prefHeight="43.0" prefWidth="269.0" text="CADASTRAR LOCAÇÃO">
+            <Button fx:id="botaoLocacao" layoutX="180.0" layoutY="316.0" mnemonicParsing="false" onAction="#cadastrarLocacao" prefHeight="43.0" prefWidth="269.0" text="LOCAÇÕES">
                <font>
                   <Font size="23.0" />
                </font>
             </Button>
-            <Button layoutX="29.0" layoutY="233.0" mnemonicParsing="false" onAction="#cadastrarClientes" prefHeight="43.0" prefWidth="269.0" text="CADASTRAR CLIENTE">
+            <Button layoutX="29.0" layoutY="233.0" mnemonicParsing="false" onAction="#cadastrarClientes" prefHeight="43.0" prefWidth="269.0" text="CLIENTES">
                <font>
                   <Font size="23.0" />
                </font>
             </Button>
-            <Button layoutX="29.0" layoutY="306.0" mnemonicParsing="false" onAction="#cadastrarVeiculos" prefHeight="43.0" prefWidth="269.0" text="CADASTRAR VEÍCULO">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Button>
-            <Button fx:id="botaoLocacao1" layoutX="330.0" layoutY="306.0" mnemonicParsing="false" onAction="#cadastrarLocacao" prefHeight="43.0" prefWidth="269.0" text="INFORMAÇÕES">
+            <Button layoutX="325.0" layoutY="233.0" mnemonicParsing="false" onAction="#cadastrarVeiculos" prefHeight="43.0" prefWidth="269.0" text="VEÍCULOS">
                <font>
                   <Font size="23.0" />
                </font>

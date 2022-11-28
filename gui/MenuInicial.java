@@ -14,10 +14,11 @@ import javafx.stage.Stage;
 
 /**
  * 
- * Classe responsável por controlar a interface gráfica MenuInicial ( Controller )
+ * Classe responsável por controlar a interface gráfica MenuInicial ( Controller
+ * )
  * 
  */
-public class MenuInicial{
+public class MenuInicial {
 
     private Stage stage;
     private Scene scene;
@@ -31,7 +32,7 @@ public class MenuInicial{
     private MenuVeiculos menuVeiculos;
     private MenuLocacoes menuLocacoes;
 
-    public MenuInicial(){
+    public MenuInicial() {
         menuClientes = new MenuClientes(listaClientes);
         menuVeiculos = new MenuVeiculos(listaVeiculos);
         menuLocacoes = new MenuLocacoes(listaLocacoes, listaVeiculos, listaClientes);
