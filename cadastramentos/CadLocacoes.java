@@ -19,7 +19,7 @@ public class CadLocacoes implements ILocacoes {
             listalocacoes.add(l);
         } catch (Exception e) {
             System.out.println("Ocorreu o erro: " + e);
-        }
+        }//0
     }
 
     @Override
