@@ -67,6 +67,7 @@ public class MenuVeiculos {
 
             Veiculo veiculo;
             int ano = 0;
+            boolean ok = true;
 
             System.out.println("|===========================================|"); // Menu do programa
             System.out.println("|=========== CADASTRO DE VEICULOS ==========|"); // Menu do programa
@@ -76,7 +77,6 @@ public class MenuVeiculos {
             System.out.println("Informe a Placa do Veículo: ");
             String placa = e.nextLine();
             System.out.println(" ");
-            boolean ok = true;
             while (ok) {
                 try {
                     System.out.println("Informe o Ano do Veículo: ");
