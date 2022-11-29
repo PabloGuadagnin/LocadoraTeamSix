@@ -86,7 +86,7 @@ public class MenuLocacoes {
             System.out.println("|===========================================|");
             System.out.println(" ");
             System.out.println("Informe o CPF do Cliente: ");
-            
+
             do {
                 String cpf = e.nextLine();
                 locacao.setCliente(listaClientes.get(cpf));
@@ -100,8 +100,18 @@ public class MenuLocacoes {
 
             System.out.println(" ");
             System.out.println("Informe a Placa do Veículo: ");
-            String placa = e.nextLine();
-            locacao.setVeiculo(listaVeiculos.get(placa));
+            do {
+                i=0;
+                String placa = e.nextLine();
+                if (listaVeiculos.existe(placa)) {
+                    locacao.setVeiculo(listaVeiculos.get(placa));
+                    i = 1;
+                } else {
+                    System.out.println("placa invalida");
+                    i = 0;
+                }
+            } while (i == 0);
+            
             System.out.println(" ");
             // Boolean para o seguro
             String seguro = textInput("Informe se Deseja Seguro: (S/N) ");
