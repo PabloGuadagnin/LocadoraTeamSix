@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 
 import cadastramentos.CadClientes;
 import construtores.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.fxml.FXML;
@@ -18,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -31,11 +34,11 @@ public class MenuClientes implements Initializable {
     private Parent root;
     private CadClientes listaClientes = new CadClientes();
 
-    public MenuClientes() {
-    }
-
     public MenuClientes(CadClientes listaClientes) {
         this.listaClientes = listaClientes;
+    }
+
+    public MenuClientes() {
     }
 
     Cliente cliente = new Cliente(null, null, null, null, null);
@@ -57,13 +60,13 @@ public class MenuClientes implements Initializable {
     private TextField telefoneCliente;
 
     @FXML
-    private TableView<CadClientes> tabelaClientes;
+    private TableView<Cliente> tabelaClientes;
 
     @FXML
-    private TableColumn<CadClientes, String> colunaCPF;
+    private TableColumn<Cliente, String> colunaCPF;
 
     @FXML
-    private TableColumn<CadClientes, String> colunaNome;
+    private TableColumn<Cliente, String> colunaNome;
 
     @FXML
     void confirmarCadastro(ActionEvent event) {
@@ -75,8 +78,8 @@ public class MenuClientes implements Initializable {
 
         listaClientes.add(cliente);
 
-        JOptionPane.showMessageDialog(null, "Cliente "
-                + cliente.getNome() + " cadastrado com sucesso.");
+        JOptionPane.showMessageDialog(null,
+                "Cliente " + cliente.getNome() + " cadastrado com sucesso.");
 
         nomeCliente.setText("");
         cpfCliente.setText("");
@@ -85,6 +88,12 @@ public class MenuClientes implements Initializable {
         telefoneCliente.setText("");
 
         nomeCliente.requestFocus();
+
+        colunaCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+
+        tabelaClientes.setItems(FXCollections.observableArrayList(
+                listaClientes.getListaCLientes()));
     }
 
     @FXML
@@ -98,6 +107,5 @@ public class MenuClientes implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 }
