@@ -7,6 +7,7 @@ import construtores.*;
 
 public class MenuLocacoes {
     int cod = 1;
+    int i;
     Boolean deseja = true;
     static Scanner e = new Scanner(System.in);
 
@@ -85,8 +86,18 @@ public class MenuLocacoes {
             System.out.println("|===========================================|");
             System.out.println(" ");
             System.out.println("Informe o CPF do Cliente: ");
-            String cpf = e.nextLine();
-            locacao.setCliente(listaClientes.get(cpf));
+            
+            do {
+                String cpf = e.nextLine();
+                locacao.setCliente(listaClientes.get(cpf));
+                if (listaClientes.existe(cpf)) {
+                    i = 1;
+                } else {
+                    System.out.println("CPF Invalido");
+                    i = 0;
+                }
+            } while (i == 0);
+
             System.out.println(" ");
             System.out.println("Informe a Placa do Veículo: ");
             String placa = e.nextLine();

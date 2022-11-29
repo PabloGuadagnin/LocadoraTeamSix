@@ -8,8 +8,6 @@ import javax.swing.JOptionPane;
 
 import cadastramentos.CadClientes;
 import construtores.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.fxml.FXML;
@@ -20,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -34,11 +31,11 @@ public class MenuClientes implements Initializable {
     private Parent root;
     private CadClientes listaClientes = new CadClientes();
 
-    public MenuClientes(CadClientes listaClientes) {
-        this.listaClientes = listaClientes;
+    public MenuClientes() {
     }
 
-    public MenuClientes() {
+    public MenuClientes(CadClientes listaClientes) {
+        this.listaClientes = listaClientes;
     }
 
     Cliente cliente = new Cliente(null, null, null, null, null);
@@ -60,17 +57,22 @@ public class MenuClientes implements Initializable {
     private TextField telefoneCliente;
 
     @FXML
-    private TableView<Cliente> tabelaClientes;
+    private TableView<CadClientes> tabelaClientes;
 
     @FXML
-    private TableColumn<Cliente, String> colunaCPF;
+    private TableColumn<CadClientes, String> colunaCPF;
 
     @FXML
-    private TableColumn<Cliente, String> colunaNome;
+    private TableColumn<CadClientes, String> colunaNome;
 
     @FXML
     void confirmarCadastro(ActionEvent event) {
-        cliente.setNome(nomeCliente.getText());
+        try {
+            cliente.setNome(nomeCliente.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocorre");
+        }
+        
         cliente.setCpf(cpfCliente.getText());
         cliente.setCnh(cnhCliente.getText());
         cliente.setEndereco(enderecoCliente.getText());
@@ -78,8 +80,8 @@ public class MenuClientes implements Initializable {
 
         listaClientes.add(cliente);
 
-        JOptionPane.showMessageDialog(null,
-                "Cliente " + cliente.getNome() + " cadastrado com sucesso.");
+        JOptionPane.showMessageDialog(null, "Cliente "
+                + cliente.getNome() + " cadastrado com sucesso.");
 
         nomeCliente.setText("");
         cpfCliente.setText("");
@@ -88,12 +90,6 @@ public class MenuClientes implements Initializable {
         telefoneCliente.setText("");
 
         nomeCliente.requestFocus();
-
-        colunaCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-        colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-
-        tabelaClientes.setItems(FXCollections.observableArrayList(
-                listaClientes.getListaCLientes()));
     }
 
     @FXML
@@ -107,5 +103,6 @@ public class MenuClientes implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
     }
 }

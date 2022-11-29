@@ -6,12 +6,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "LocadoraTeamSix_eab460bb"
+        },
+        {
+            "type": "java",
             "name": "Launch App",
             "request": "launch",
             "mainClass": "gui.App",
             "projectName": "LocadoraTeamSix_eab460bb",
             "vmArgs": "--module-path \"C:/Users/Lucas.LUSCA/OneDrive/Área de Trabalho/LocadoraTeamSix/.JavaFX/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml,javafx.graphics"
-       
         },
         {
             "type": "java",
