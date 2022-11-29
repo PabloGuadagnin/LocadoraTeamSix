@@ -101,7 +101,7 @@ public class MenuLocacoes {
             System.out.println(" ");
             System.out.println("Informe a Placa do Veículo: ");
             do {
-                i=0;
+                i = 0;
                 String placa = e.nextLine();
                 if (listaVeiculos.existe(placa)) {
                     locacao.setVeiculo(listaVeiculos.get(placa));
@@ -111,7 +111,7 @@ public class MenuLocacoes {
                     i = 0;
                 }
             } while (i == 0);
-            
+
             System.out.println(" ");
             // Boolean para o seguro
             String seguro = textInput("Informe se Deseja Seguro: (S/N) ");
@@ -131,8 +131,17 @@ public class MenuLocacoes {
             }
 
             System.out.println(" ");
-            System.out.println("Informe a data Inicial, não use /, escreva DDMMAAAA: ");
-            locacao.setDataInicial(e.nextInt());
+            
+                try {
+                    System.out.println("Informe a data Inicial, não use /, escreva DDMMAAAA: ");
+
+                    locacao.setDataInicial(e.nextInt());
+                    i = 1;
+                } catch (Exception e) {
+                    System.out.println("Erro " + e);
+                    i = 0;
+                }
+            
             System.out.println(" ");
             System.out.println("Informe a Data Final, não use /, escreva DDMMAAAA: ");
             locacao.setDataFinal(e.nextInt());
