@@ -66,6 +66,7 @@ public class MenuVeiculos {
         while (cadastrando) {
 
             Veiculo veiculo;
+            int ano = 0;
 
             System.out.println("|===========================================|"); // Menu do programa
             System.out.println("|=========== CADASTRO DE VEICULOS ==========|"); // Menu do programa
@@ -75,8 +76,19 @@ public class MenuVeiculos {
             System.out.println("Informe a Placa do Veículo: ");
             String placa = e.nextLine();
             System.out.println(" ");
-            System.out.println("Informe o Ano do Veículo: ");
-            int ano = e.nextInt();
+            boolean ok = true;
+            while (ok) {
+                try {
+                    System.out.println("Informe o Ano do Veículo: ");
+                    ano = e.nextInt();
+                    ok = false;
+                } catch (Exception e) {
+                    System.out.println("Ocorreu o erro " + e + " entre com um ano válido.");
+                    ok = true;
+                } finally {
+                    e.nextLine();
+                }
+            }
             System.out.println(" ");
             System.out.println("Informe o Valor da Diária: ");
             int valorDiaria = e.nextInt();
