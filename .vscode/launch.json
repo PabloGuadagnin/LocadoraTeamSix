@@ -8,6 +8,14 @@
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
+            "mainClass": "gui2.Main",
+            "projectName": "LocadoraTeamSix_f8ccbff3",
+            "vmArgs": "--module-path \"G:/Meu Drive/Rep.GitHub/LocadoraTeamSix/.JavaFX/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml,javafx.graphics"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
             "mainClass": "Main",
             "projectName": "LocadoraTeamSix_eab460bb"
         },
