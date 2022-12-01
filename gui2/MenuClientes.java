@@ -2,20 +2,27 @@ package gui2;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javax.swing.JOptionPane;
-
 import construtores.Cliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 public class MenuClientes {
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @FXML
     private ResourceBundle resources;
@@ -87,15 +94,22 @@ public class MenuClientes {
             if (this.nomeCliente.getText().equals("") || this.cpfCliente.getText().equals("") ||
                     this.cnhCliente.getText().equals("") || this.enderecoCliente.getText().equals("") ||
                     this.telefoneCliente.getText().equals("")) {
+
+                        this.nomeCliente.setText(clientesObs.get(i).getNome());
+                        this.cpfCliente.setText(clientesObs.get(i).getCpf());
+                        this.cnhCliente.setText(clientesObs.get(i).getCnh());
+                        this.enderecoCliente.setText(clientesObs.get(i).getEndereco());
+                        this.telefoneCliente.setText(clientesObs.get(i).getTelefone());
+
                 JOptionPane.showMessageDialog(null,
-                        "Todos os campos são obrigatórios.");
+                        "Altere o que desejar.");
             } else {
                 try {
                     Cliente novoCliente = new Cliente(this.nomeCliente.getText(), this.cpfCliente.getText(),
                             this.cnhCliente.getText(), this.enderecoCliente.getText(), this.telefoneCliente.getText());
 
                     this.clientesObs.add(i, novoCliente);
-                    this.clientesObs.remove(i+1);
+                    this.clientesObs.remove(i + 1);
 
                     this.nomeCliente.clear();
                     this.cpfCliente.clear();
@@ -131,8 +145,13 @@ public class MenuClientes {
     }
 
     @FXML
-    void voltarMenuInicial(ActionEvent event) {
+    void voltarMenuInicial(ActionEvent event) throws Exception {
 
+        root = FXMLLoader.load(getClass().getResource("MenuInicial.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     private ObservableList<Cliente> clientesObs;
