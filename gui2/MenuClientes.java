@@ -39,14 +39,23 @@ public class MenuClientes {
     private TableView<Cliente> tabelaClientes;
 
     @FXML
+    private TableColumn colunaCPF;
+
+    @FXML
+    private TableColumn colunaNome;
+
+    @FXML
     private TextField telefoneCliente;
 
     @FXML
     void confirmarCadastro(ActionEvent event) {
 
-        if (this.nomeCliente.getText() != null && this.cpfCliente.getText() != null &&
-                this.cnhCliente.getText() != null && this.enderecoCliente.getText() != null &&
-                this.telefoneCliente.getText() != null) {
+        if (this.nomeCliente.getText().equals("") || this.cpfCliente.getText().equals("") ||
+                this.cnhCliente.getText().equals("") || this.enderecoCliente.getText().equals("") ||
+                this.telefoneCliente.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "Todos os campos são obrigatórios.");
+        } else {
             try {
                 Cliente novoCliente = new Cliente(this.nomeCliente.getText(), this.cpfCliente.getText(),
                         this.cnhCliente.getText(), this.enderecoCliente.getText(), this.telefoneCliente.getText());
@@ -67,9 +76,57 @@ public class MenuClientes {
                 JOptionPane.showMessageDialog(null,
                         "Entradas inválidas, corrija e envie novamente.");
             }
+        }
+    }
+
+    @FXML
+    void alterarObj(ActionEvent event) {
+        int i = this.tabelaClientes.getSelectionModel().getSelectedIndex();
+
+        if (i >= 0) {
+            if (this.nomeCliente.getText().equals("") || this.cpfCliente.getText().equals("") ||
+                    this.cnhCliente.getText().equals("") || this.enderecoCliente.getText().equals("") ||
+                    this.telefoneCliente.getText().equals("")) {
+                JOptionPane.showMessageDialog(null,
+                        "Todos os campos são obrigatórios.");
+            } else {
+                try {
+                    Cliente novoCliente = new Cliente(this.nomeCliente.getText(), this.cpfCliente.getText(),
+                            this.cnhCliente.getText(), this.enderecoCliente.getText(), this.telefoneCliente.getText());
+
+                    this.clientesObs.add(i, novoCliente);
+                    this.clientesObs.remove(i+1);
+
+                    this.nomeCliente.clear();
+                    this.cpfCliente.clear();
+                    this.cnhCliente.clear();
+                    this.enderecoCliente.clear();
+                    this.telefoneCliente.clear();
+
+                    nomeCliente.requestFocus();
+
+                    JOptionPane.showMessageDialog(null, "Cliente "
+                            + novoCliente.getNome() + " alterado com sucesso.");
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null,
+                            "Entradas inválidas, corrija e envie novamente.");
+                }
+            }
         } else {
             JOptionPane.showMessageDialog(null,
-                    "Todos os campos são obrigatórios.");
+                    "Selecione um cliente para alterar.");
+        }
+    }
+
+    @FXML
+    void deletaObj(ActionEvent evet) {
+        int i = this.tabelaClientes.getSelectionModel().getSelectedIndex();
+        if (i >= 0) {
+            this.clientesObs.remove(i);
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Selecione um cliente para remover.");
         }
     }
 
@@ -85,15 +142,9 @@ public class MenuClientes {
 
         this.clientesObs = FXCollections.observableArrayList();
 
-        TableColumn cpfCol = new TableColumn("CPF");
-        TableColumn nomeCol = new TableColumn("Nome");
-        TableColumn editCol = new TableColumn("Editar");
-        TableColumn excCol = new TableColumn("Excluir");
+        colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente, String>("cpf"));
+        colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
 
-        cpfCol.setCellValueFactory(new PropertyValueFactory<Cliente, String>("cpf"));
-        nomeCol.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
-
-        this.tabelaClientes.getColumns().addAll(cpfCol, nomeCol, editCol, excCol);
         this.tabelaClientes.setItems(clientesObs);
 
         assert cnhCliente != null : "fx:id=\"cnhCliente\" was not injected: check your FXML file 'MenuClientes.fxml'.";
