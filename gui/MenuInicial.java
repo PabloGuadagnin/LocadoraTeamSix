@@ -40,6 +40,9 @@ public class MenuInicial {
 
     @FXML
     void cadastrarClientes(ActionEvent event) throws IOException {
+
+        MenuClientes menuClientes = new MenuClientes(listaClientes);
+
         root = FXMLLoader.load(getClass().getResource("layoutMC.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -49,6 +52,9 @@ public class MenuInicial {
 
     @FXML
     void cadastrarLocacao(ActionEvent event) throws IOException {
+
+        MenuLocacoes menuLocacoes = new MenuLocacoes(listaLocacoes, listaVeiculos, listaClientes);
+
         root = FXMLLoader.load(getClass().getResource("layoutML.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -58,6 +64,9 @@ public class MenuInicial {
 
     @FXML
     void cadastrarVeiculos(ActionEvent event) throws IOException {
+
+        MenuVeiculos menuVeiculos = new MenuVeiculos(listaVeiculos);
+
         root = FXMLLoader.load(getClass().getResource("layoutMV.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

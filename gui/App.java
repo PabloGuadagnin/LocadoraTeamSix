@@ -16,6 +16,8 @@ public class App extends Application {
     public void start(Stage stage) {
         try {
 
+            MenuInicial menuInicial = new MenuInicial();
+
             Parent root = FXMLLoader.load(getClass().getResource("layoutInicio.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);

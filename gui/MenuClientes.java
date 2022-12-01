@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import cadastramentos.CadClientes;
 import construtores.*;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -57,22 +59,22 @@ public class MenuClientes implements Initializable {
     private TextField telefoneCliente;
 
     @FXML
-    private TableView<CadClientes> tabelaClientes;
+    private TableView<Cliente> tabelaClientes;
 
     @FXML
-    private TableColumn<CadClientes, String> colunaCPF;
+    private TableColumn<Cliente, String> colunaCPF;
 
     @FXML
-    private TableColumn<CadClientes, String> colunaNome;
+    private TableColumn<Cliente, String> colunaNome;
 
     @FXML
     void confirmarCadastro(ActionEvent event) {
         try {
             cliente.setNome(nomeCliente.getText());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ocorre");
+            JOptionPane.showMessageDialog(null, "Ocorreu o erro: " + e);
         }
-        
+
         cliente.setCpf(cpfCliente.getText());
         cliente.setCnh(cnhCliente.getText());
         cliente.setEndereco(enderecoCliente.getText());
@@ -103,6 +105,12 @@ public class MenuClientes implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente, String>("cpf"));
+        colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
+
+        tabelaClientes.setItems(FXCollections.observableArrayList(
+                listaClientes.getListaCLientes()));
 
     }
 }
