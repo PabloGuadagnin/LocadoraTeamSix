@@ -40,11 +40,21 @@ public class MenuInicial {
     @FXML
     void cadastrarLocacao(ActionEvent event) throws IOException {
 
+        root = FXMLLoader.load(getClass().getResource("MenuLocacoes.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
     void cadastrarVeiculos(ActionEvent event) throws IOException {
 
+        root = FXMLLoader.load(getClass().getResource("MenuVeiculos.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
