@@ -15,7 +15,11 @@ public class CadVeiculos implements IVeiculos {
 
     @Override
     public void add(Veiculo v) {
+        try{
         listaveiculos.add(v);
+        }catch(Exception e){
+            System.out.println("Erro "+e);
+        }
     }
 
     @Override

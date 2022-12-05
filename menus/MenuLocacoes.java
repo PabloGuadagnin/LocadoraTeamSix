@@ -7,6 +7,7 @@ import construtores.*;
 
 public class MenuLocacoes {
     int cod = 1;
+    int i;
     Boolean deseja = true;
     static Scanner e = new Scanner(System.in);
 
@@ -85,12 +86,32 @@ public class MenuLocacoes {
             System.out.println("|===========================================|");
             System.out.println(" ");
             System.out.println("Informe o CPF do Cliente: ");
-            String cpf = e.nextLine();
-            locacao.setCliente(listaClientes.get(cpf));
+
+            do {
+                String cpf = e.nextLine();
+                locacao.setCliente(listaClientes.get(cpf));
+                if (listaClientes.existe(cpf)) {
+                    i = 1;
+                } else {
+                    System.out.println("CPF Invalido");
+                    i = 0;
+                }
+            } while (i == 0);
+
             System.out.println(" ");
             System.out.println("Informe a Placa do Veículo: ");
-            String placa = e.nextLine();
-            locacao.setVeiculo(listaVeiculos.get(placa));
+            do {
+                i = 0;
+                String placa = e.nextLine();
+                if (listaVeiculos.existe(placa)) {
+                    locacao.setVeiculo(listaVeiculos.get(placa));
+                    i = 1;
+                } else {
+                    System.out.println("placa invalida");
+                    i = 0;
+                }
+            } while (i == 0);
+
             System.out.println(" ");
             // Boolean para o seguro
             String seguro = textInput("Informe se Deseja Seguro: (S/N) ");
@@ -110,8 +131,17 @@ public class MenuLocacoes {
             }
 
             System.out.println(" ");
-            System.out.println("Informe a data Inicial, não use /, escreva DDMMAAAA: ");
-            locacao.setDataInicial(e.nextInt());
+            
+                try {
+                    System.out.println("Informe a data Inicial, não use /, escreva DDMMAAAA: ");
+
+                    locacao.setDataInicial(e.nextInt());
+                    i = 1;
+                } catch (Exception e) {
+                    System.out.println("Erro " + e);
+                    i = 0;
+                }
+            
             System.out.println(" ");
             System.out.println("Informe a Data Final, não use /, escreva DDMMAAAA: ");
             locacao.setDataFinal(e.nextInt());

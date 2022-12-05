@@ -11,12 +11,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuClientes">
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui2.MenuClientes">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="416.0" stroke="BLACK" strokeType="INSIDE" width="627.0" />
       <ImageView fitHeight="503.0" fitWidth="628.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@fundo.jpg" />
+            <Image url="@../gui/fundo.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="416.0" fitWidth="628.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true" />
@@ -36,14 +36,15 @@
       <TextField fx:id="telefoneCliente" layoutX="94.0" layoutY="280.0" />
       <Text fill="WHITE" layoutX="37.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone:" />
       <Button layoutX="34.0" layoutY="334.0" mnemonicParsing="false" onAction="#confirmarCadastro" prefHeight="56.0" prefWidth="136.0" text="CADASTRAR" />
-      <Button layoutX="191.0" layoutY="334.0" mnemonicParsing="false" onAction="#voltarMenuInicial" prefHeight="56.0" prefWidth="136.0" text="VOLTAR" />
+      <Button layoutX="328.0" layoutY="334.0" mnemonicParsing="false" onAction="#voltarMenuInicial" prefHeight="56.0" prefWidth="136.0" text="VOLTAR" />
 
-      <TableView fx:id="tabelaClientes" layoutX="299.0" layoutY="110.0" prefHeight="197.0" prefWidth="293.0">
-        <columns>
-          <TableColumn fx:id="colunaCPF" prefWidth="113.0" text="CPF" />
-          <TableColumn fx:id="colunaNome" prefWidth="179.0" text="Nome" />
-        </columns>
-      </TableView>
+      <TableView fx:id="tabelaClientes" layoutX="277.0" layoutY="110.0" prefHeight="197.0" prefWidth="322.0">
+         <columns>
+            <TableColumn fx:id="colunaCPF" prefWidth="140.0" text="CPF" />
+            <TableColumn fx:id="colunaNome" prefWidth="181.0" text="Nome" />
+         </columns></TableView>
+      <Button layoutX="181.0" layoutY="334.0" mnemonicParsing="false" onAction="#alterarObj" prefHeight="25.0" prefWidth="136.0" text="ALTERAR" />
+      <Button layoutX="181.0" layoutY="365.0" mnemonicParsing="false" onAction="#deletaObj" prefHeight="25.0" prefWidth="136.0" text="REMOVER" />
       
    </children>
 </AnchorPane>

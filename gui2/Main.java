@@ -1,6 +1,4 @@
-package gui;
-
-import java.util.Optional;
+package gui2;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,29 +7,28 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import java.net.URL;
+import java.util.Optional;
 
-public class App extends Application {
+public class Main extends Application {
 
     @Override
-    public void start(Stage stage) {
-        try {
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        URL xmlURL = getClass().getResource("MenuInicial.fxml");
+        loader.setLocation(xmlURL);
 
-            MenuInicial menuInicial = new MenuInicial();
+        Parent parent = loader.load();
 
-            Parent root = FXMLLoader.load(getClass().getResource("layoutInicio.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+        Scene scene = new Scene(parent);
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
-            stage.setOnCloseRequest(event -> {
-                if (sairDaAplicacao())
-                    System.exit(0);
-                event.consume();
-            });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        primaryStage.setOnCloseRequest(event -> {
+            if (sairDaAplicacao())
+                System.exit(0);
+            event.consume();
+        });
     }
 
     public Boolean sairDaAplicacao() {
