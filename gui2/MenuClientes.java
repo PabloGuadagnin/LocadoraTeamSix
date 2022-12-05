@@ -3,6 +3,8 @@ package gui2;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
+
+import cadastramentos.CadClientes;
 import construtores.Cliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,6 +56,8 @@ public class MenuClientes {
     @FXML
     private TextField telefoneCliente;
 
+    CadClientes listaClientes = new CadClientes();
+
     @FXML
     void confirmarCadastro(ActionEvent event) {
 
@@ -64,21 +68,28 @@ public class MenuClientes {
                     "Todos os campos são obrigatórios.");
         } else {
             try {
-                Cliente novoCliente = new Cliente(this.nomeCliente.getText(), this.cpfCliente.getText(),
-                        this.cnhCliente.getText(), this.enderecoCliente.getText(), this.telefoneCliente.getText());
+                if (listaClientes.existe(cpfCliente.getText()) || listaClientes.existeCnh(cnhCliente.getText())) {
+                    JOptionPane.showMessageDialog(null,
+                            "O CPF ou CNH já existe(m) no banco de dados.");
+                } else {
+                    Cliente novoCliente = new Cliente(this.nomeCliente.getText(), this.cpfCliente.getText(),
+                            this.cnhCliente.getText(), this.enderecoCliente.getText(), this.telefoneCliente.getText());
 
-                this.clientesObs.add(novoCliente);
+                    this.clientesObs.add(novoCliente);
 
-                this.nomeCliente.clear();
-                this.cpfCliente.clear();
-                this.cnhCliente.clear();
-                this.enderecoCliente.clear();
-                this.telefoneCliente.clear();
+                    this.listaClientes.add(novoCliente);
 
-                nomeCliente.requestFocus();
+                    this.nomeCliente.clear();
+                    this.cpfCliente.clear();
+                    this.cnhCliente.clear();
+                    this.enderecoCliente.clear();
+                    this.telefoneCliente.clear();
 
-                JOptionPane.showMessageDialog(null, "Cliente "
-                        + novoCliente.getNome() + " cadastrado com sucesso.");
+                    nomeCliente.requestFocus();
+
+                    JOptionPane.showMessageDialog(null, "Cliente "
+                            + novoCliente.getNome() + " cadastrado com sucesso.");
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,
                         "Entradas inválidas, corrija e envie novamente.");
@@ -95,18 +106,19 @@ public class MenuClientes {
                     this.cnhCliente.getText().equals("") || this.enderecoCliente.getText().equals("") ||
                     this.telefoneCliente.getText().equals("")) {
 
-                        this.nomeCliente.setText(clientesObs.get(i).getNome());
-                        this.cpfCliente.setText(clientesObs.get(i).getCpf());
-                        this.cnhCliente.setText(clientesObs.get(i).getCnh());
-                        this.enderecoCliente.setText(clientesObs.get(i).getEndereco());
-                        this.telefoneCliente.setText(clientesObs.get(i).getTelefone());
+                this.nomeCliente.setText(clientesObs.get(i).getNome());
+                this.cpfCliente.setText(clientesObs.get(i).getCpf());
+                this.cnhCliente.setText(clientesObs.get(i).getCnh());
+                this.enderecoCliente.setText(clientesObs.get(i).getEndereco());
+                this.telefoneCliente.setText(clientesObs.get(i).getTelefone());
 
                 JOptionPane.showMessageDialog(null,
                         "Altere o que desejar.");
             } else {
                 try {
                     Cliente novoCliente = new Cliente(this.nomeCliente.getText(), this.cpfCliente.getText(),
-                            this.cnhCliente.getText(), this.enderecoCliente.getText(), this.telefoneCliente.getText());
+                            this.cnhCliente.getText(), this.enderecoCliente.getText(),
+                            this.telefoneCliente.getText());
 
                     this.clientesObs.add(i, novoCliente);
                     this.clientesObs.remove(i + 1);
@@ -165,18 +177,5 @@ public class MenuClientes {
         colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
 
         this.tabelaClientes.setItems(clientesObs);
-
-        assert cnhCliente != null : "fx:id=\"cnhCliente\" was not injected: check your FXML file 'MenuClientes.fxml'.";
-        assert cpfCliente != null : "fx:id=\"cpfCliente\" was not injected: check your FXML file 'MenuClientes.fxml'.";
-        assert enderecoCliente != null
-                : "fx:id=\"enderecoCliente\" was not injected: check your FXML file 'MenuClientes.fxml'.";
-        assert nomeCliente != null
-                : "fx:id=\"nomeCliente\" was not injected: check your FXML file 'MenuClientes.fxml'.";
-        assert tabelaClientes != null
-                : "fx:id=\"tabelaClientes\" was not injected: check your FXML file 'MenuClientes.fxml'.";
-        assert telefoneCliente != null
-                : "fx:id=\"telefoneCliente\" was not injected: check your FXML file 'MenuClientes.fxml'.";
-
     }
-
 }

@@ -74,6 +74,13 @@ public class CadClientes implements IClientes {
         return false;
     }
 
+    public boolean existeCnh(String CNH) {
+        for (Cliente c : listaClientes)
+            if (c.getCnh().equals(CNH))
+                return true;
+        return false;
+    }
+
     public void alterarNome(String cpf, String nome) {
     	Cliente c = get(cpf);
     	c.setNome(nome);    	

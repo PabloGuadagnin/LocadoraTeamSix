@@ -23,7 +23,7 @@
             "type": "java",
             "name": "Launch App",
             "request": "launch",
-            "mainClass": "gui.App",
+            "mainClass": "gui2.Main",
             "projectName": "LocadoraTeamSix_eab460bb",
             "vmArgs": "--module-path \"C:/Users/Lucas.LUSCA/OneDrive/Área de Trabalho/LocadoraTeamSix/.JavaFX/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml,javafx.graphics"
         },
