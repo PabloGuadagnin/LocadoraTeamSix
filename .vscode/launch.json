@@ -6,59 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "gui.App",
-            "projectName": "LocadoraTeamSix_ae0f14d2"
-        },
-        {
-            "type": "java",
             "name": "Launch Main",
             "request": "launch",
-            "mainClass": "gui2.Main",
-            "projectName": "LocadoraTeamSix_ae0f14d2"
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "mainClass": "gui2.Main",
-            "projectName": "LocadoraTeamSix_f8ccbff3",
-            "vmArgs": "--module-path \"G:/Meu Drive/Rep.GitHub/LocadoraTeamSix/.JavaFX/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml,javafx.graphics"
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "mainClass": "Main",
-            "projectName": "LocadoraTeamSix_eab460bb"
-        },
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "gui2.Main",
-            "projectName": "LocadoraTeamSix_eab460bb",
-            "vmArgs": "--module-path \"C:/Users/Lucas.LUSCA/OneDrive/Área de Trabalho/LocadoraTeamSix/.JavaFX/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml,javafx.graphics"
-        },
-        {
-            "type": "java",
-            "name": "Launch Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "mainClass": "Main",
-            "projectName": "LocadoraTeamSix_f8ccbff3"
-        },
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "gui.App",
+            "mainClass": "gui.Main",
             "projectName": "LocadoraTeamSix_f8ccbff3",
             "vmArgs": "--module-path \"G:/Meu Drive/Rep.GitHub/LocadoraTeamSix/.JavaFX/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml,javafx.graphics"
         }

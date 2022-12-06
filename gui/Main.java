@@ -1,4 +1,4 @@
-package gui2;
+package gui;
 
 import java.net.URL;
 import java.util.Optional;

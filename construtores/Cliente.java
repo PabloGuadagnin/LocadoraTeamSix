@@ -7,12 +7,12 @@ package construtores;
 public class Cliente {
 
     private String nome;
-    private String cpf;
-    private String cnh;
+    private long cpf;
+    private long cnh;
     private String endereco;
-    private String telefone;
+    private long telefone;
 
-    public Cliente(String nome, String cpf, String cnh, String endereco, String telefone) {
+    public Cliente(String nome, long cpf, long cnh, String endereco, long telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.cnh = cnh;
@@ -25,11 +25,11 @@ public class Cliente {
         return nome;
     }
 
-    public String getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
-    public String getCnh() {
+    public long getCnh() {
         return cnh;
     }
 
@@ -37,7 +37,7 @@ public class Cliente {
         return endereco;
     }
 
-    public String getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
@@ -50,7 +50,7 @@ public class Cliente {
         }
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(long cpf) {
         try {
             this.cpf = cpf;
         } catch (Exception e) {
@@ -58,7 +58,7 @@ public class Cliente {
         }
     }
 
-    public void setCnh(String cnh) {
+    public void setCnh(long cnh) {
         try {
             this.cnh = cnh;
         } catch (Exception e) {
@@ -74,7 +74,7 @@ public class Cliente {
         }
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(long telefone) {
         try {
             this.telefone = telefone;
         } catch (Exception e) {

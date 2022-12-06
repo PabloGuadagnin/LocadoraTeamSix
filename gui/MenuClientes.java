@@ -1,19 +1,17 @@
 package gui;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
 import cadastramentos.CadClientes;
-import construtores.*;
-import javafx.collections.FXCollections;
+import construtores.Cliente;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
@@ -22,27 +20,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-/**
- * Classe responsável por controlar a interface gráfica de Clientes ( Controller
- * )
+/*
+ * Classe Controller responsável por mapear o menu de clientes
  */
-public class MenuClientes implements Initializable {
+public class MenuClientes {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private CadClientes listaClientes = new CadClientes();
 
-    public MenuClientes() {
-    }
+    @FXML
+    private ResourceBundle resources;
 
-    public MenuClientes(CadClientes listaClientes) {
-        this.listaClientes = listaClientes;
-    }
+    @FXML
+    private URL location;
 
-    Cliente cliente = new Cliente(null, null, null, null, null);
-
-    // Cadastro de Clientes
     @FXML
     private TextField cnhCliente;
 
@@ -56,61 +48,168 @@ public class MenuClientes implements Initializable {
     private TextField nomeCliente;
 
     @FXML
-    private TextField telefoneCliente;
-
-    @FXML
     private TableView<Cliente> tabelaClientes;
 
     @FXML
-    private TableColumn<Cliente, String> colunaCPF;
+    private TableColumn colunaCPF;
 
     @FXML
-    private TableColumn<Cliente, String> colunaNome;
+    private TableColumn colunaNome;
 
+    @FXML
+    private TextField telefoneCliente;
+
+    private CadClientes listaClientes;
+
+    /**
+     * 
+     * Método responsável pelas ações de confirmação de cadastro
+     * 
+     * @param event
+     */
     @FXML
     void confirmarCadastro(ActionEvent event) {
-        try {
-            cliente.setNome(nomeCliente.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu o erro: " + e);
+
+        if (this.nomeCliente.getText().equals("") || this.cpfCliente.getText().equals("") ||
+                this.cnhCliente.getText().equals("") || this.enderecoCliente.getText().equals("") ||
+                this.telefoneCliente.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "Todos os campos são obrigatórios.");
+        } else {
+            try {
+                if (listaClientes.existe(Long.parseLong(cpfCliente.getText()))
+                        || listaClientes.existeCnh(Long.parseLong(cnhCliente.getText()))) {
+                    JOptionPane.showMessageDialog(null,
+                            "O CPF ou CNH já existe(m) no banco de dados.");
+                } else {
+                    Cliente novoCliente = new Cliente(this.nomeCliente.getText(),
+                            Long.parseLong(this.cpfCliente.getText()), Long.parseLong(this.cnhCliente.getText()),
+                            this.enderecoCliente.getText(), Long.parseLong(this.telefoneCliente.getText()));
+
+                    this.clientesObs.add(novoCliente);
+
+                    this.listaClientes.add(novoCliente);
+
+                    this.nomeCliente.clear();
+                    this.cpfCliente.clear();
+                    this.cnhCliente.clear();
+                    this.enderecoCliente.clear();
+                    this.telefoneCliente.clear();
+
+                    nomeCliente.requestFocus();
+
+                    JOptionPane.showMessageDialog(null, "Cliente "
+                            + novoCliente.getNome() + " cadastrado com sucesso.");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,
+                        "Entradas inválidas, corrija e envie novamente.");
+            }
         }
-
-        cliente.setCpf(cpfCliente.getText());
-        cliente.setCnh(cnhCliente.getText());
-        cliente.setEndereco(enderecoCliente.getText());
-        cliente.setTelefone(telefoneCliente.getText());
-
-        listaClientes.add(cliente);
-
-        JOptionPane.showMessageDialog(null, "Cliente "
-                + cliente.getNome() + " cadastrado com sucesso.");
-
-        nomeCliente.setText("");
-        cpfCliente.setText("");
-        cnhCliente.setText("");
-        enderecoCliente.setText("");
-        telefoneCliente.setText("");
-
-        nomeCliente.requestFocus();
     }
 
+    /**
+     * Método responsável pelas ações de alteração de cadastro
+     * 
+     * @param event
+     */
     @FXML
-    void voltarMenuInicial(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("layoutInicio.fxml"));
+    void alterarObj(ActionEvent event) {
+        String x;
+        int i = this.tabelaClientes.getSelectionModel().getSelectedIndex();
+
+        if (i >= 0) {
+            if (this.nomeCliente.getText().equals("") || this.cpfCliente.getText().equals("") ||
+                    this.cnhCliente.getText().equals("") || this.enderecoCliente.getText().equals("") ||
+                    this.telefoneCliente.getText().equals("")) {
+
+                this.nomeCliente.setText(clientesObs.get(i).getNome());
+                this.cpfCliente.setText(x = "" + clientesObs.get(i).getCpf());
+                this.cnhCliente.setText(x = "" + clientesObs.get(i).getCnh());
+                this.enderecoCliente.setText(clientesObs.get(i).getEndereco());
+                this.telefoneCliente.setText(x = "" + clientesObs.get(i).getTelefone());
+
+                JOptionPane.showMessageDialog(null,
+                        "Altere o que desejar.");
+            } else {
+                try {
+                    Cliente novoCliente = new Cliente(this.nomeCliente.getText(),
+                            Long.parseLong(this.cpfCliente.getText()), Long.parseLong(this.cnhCliente.getText()),
+                            this.enderecoCliente.getText(), Long.parseLong(this.telefoneCliente.getText()));
+
+                    this.clientesObs.add(i, novoCliente);
+                    this.clientesObs.remove(i + 1);
+
+                    this.nomeCliente.clear();
+                    this.cpfCliente.clear();
+                    this.cnhCliente.clear();
+                    this.enderecoCliente.clear();
+                    this.telefoneCliente.clear();
+
+                    nomeCliente.requestFocus();
+
+                    JOptionPane.showMessageDialog(null, "Cliente "
+                            + novoCliente.getNome() + " alterado com sucesso.");
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null,
+                            "Entradas inválidas, corrija e envie novamente.");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Selecione um cliente para alterar.");
+        }
+    }
+
+    /**
+     * Método responsável pelas ações ao deletar um cadastro
+     * 
+     * @param evet
+     */
+    @FXML
+    void deletaObj(ActionEvent evet) {
+        int i = this.tabelaClientes.getSelectionModel().getSelectedIndex();
+        if (i >= 0) {
+            this.clientesObs.remove(i);
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Selecione um cliente para remover.");
+        }
+    }
+
+    /**
+     * Método responsável por voltar ao menu principal
+     * 
+     * @param event
+     * @throws Exception
+     */
+    @FXML
+    void voltarMenuInicial(ActionEvent event) throws Exception {
+
+        root = FXMLLoader.load(getClass().getResource("MenuInicial.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    private ObservableList<Cliente> clientesObs;
+
+    /**
+     * Método que "substitui" o construtor em JavaFX, este, responsável pelas
+     * construções das listas e afins.
+     */
+    @FXML
+    void initialize() {
+
+        listaClientes = MenuInicial.getListaClientes();
+
+        clientesObs = MenuInicial.getObsListaClietnes();
 
         colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente, String>("cpf"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
 
-        tabelaClientes.setItems(FXCollections.observableArrayList(
-                listaClientes.getListaCLientes()));
-
+        tabelaClientes.setItems(clientesObs);
     }
 }

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui2.MenuClientes">
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuClientes">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="416.0" stroke="BLACK" strokeType="INSIDE" width="627.0" />
       <ImageView fitHeight="503.0" fitWidth="628.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">

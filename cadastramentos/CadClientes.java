@@ -28,17 +28,17 @@ public class CadClientes implements IClientes {
         }
     }
 
-    public Cliente get(String CPF) {
+    public Cliente get(long CPF) {
         for (Cliente c : listaClientes)
-            if (c.getCpf().equals(CPF))
+            if (c.getCpf() == CPF)
                 return c;
         return null;
     }
 
     @Override
-    public String getInfo(String CPF) {
+    public String getInfo(long CPF) {
         for (Cliente c : listaClientes)
-            if (c.getCpf().equals(CPF))
+            if (c.getCpf() == CPF)
                 return c.toString();
         return null;
     }
@@ -60,28 +60,28 @@ public class CadClientes implements IClientes {
     }
 
     @Override
-    public boolean remove(String CPF) {
+    public boolean remove(long CPF) {
         Cliente c = get(CPF);
         listaClientes.remove(c);
         return true;
     }
 
     @Override
-    public boolean existe(String CPF) {
+    public boolean existe(long CPF) {
         for (Cliente c : listaClientes)
-            if (c.getCpf().equals(CPF))
+            if (c.getCpf() == CPF)
                 return true;
         return false;
     }
 
-    public boolean existeCnh(String CNH) {
+    public boolean existeCnh(long CNH) {
         for (Cliente c : listaClientes)
-            if (c.getCnh().equals(CNH))
+            if (c.getCnh() == CNH)
                 return true;
         return false;
     }
 
-    public void alterarNome(String cpf, String nome) {
+    public void alterarNome(long cpf, String nome) {
     	Cliente c = get(cpf);
     	c.setNome(nome);    	
     }
