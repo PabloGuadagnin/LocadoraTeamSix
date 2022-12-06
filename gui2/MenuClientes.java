@@ -56,7 +56,7 @@ public class MenuClientes {
     @FXML
     private TextField telefoneCliente;
 
-    CadClientes listaClientes = new CadClientes();
+    private CadClientes listaClientes;
 
     @FXML
     void confirmarCadastro(ActionEvent event) {
@@ -171,11 +171,13 @@ public class MenuClientes {
     @FXML
     void initialize() {
 
-        this.clientesObs = FXCollections.observableArrayList();
+        listaClientes = MenuInicial.getListaClientes();
+
+        clientesObs = MenuInicial.getObsListaClietnes();
 
         colunaCPF.setCellValueFactory(new PropertyValueFactory<Cliente, String>("cpf"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nome"));
 
-        this.tabelaClientes.setItems(clientesObs);
+        tabelaClientes.setItems(clientesObs);
     }
 }
