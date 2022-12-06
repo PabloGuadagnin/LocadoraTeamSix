@@ -1,5 +1,12 @@
 package gui2;
 
+import java.net.URL;
+import java.util.Optional;
+
+import cadastramentos.CadClientes;
+import cadastramentos.CadLocacoes;
+import cadastramentos.CadVeiculos;
+import construtores.Cliente;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,14 +16,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import java.net.URL;
-import java.util.Optional;
 
-import cadastramentos.*;
-import construtores.Cliente;
-
+/*
+ * Classe principal do projeto, responsável pela inicialização do programa
+ */
 public class Main extends Application {
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see javafx.application.Application#start(javafx.stage.Stage)
+     * 
+     * Método responsável por inicializar o programa JavaFX
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
@@ -50,6 +62,12 @@ public class Main extends Application {
         });
     }
 
+    /**
+     * Método responsável por tratar o fechamento do programa, exibindo uma popup de
+     * confirmação ao clicar em fechar
+     * 
+     * @return true or false
+     */
     public Boolean sairDaAplicacao() {
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
         alerta.setTitle("Alerta");
@@ -62,6 +80,11 @@ public class Main extends Application {
         return resultado.get() == botaoSim ? true : false;
     }
 
+    /**
+     * Responsável pela execução da classe
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

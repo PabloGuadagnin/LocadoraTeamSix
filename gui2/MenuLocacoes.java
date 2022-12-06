@@ -3,6 +3,7 @@ package gui2;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -75,12 +76,18 @@ public class MenuLocacoes {
 
     @FXML
     void initialize() {
-        assert comboBoxClientes != null : "fx:id=\"comboBoxClientes\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
-        assert comboBoxVeiculo != null : "fx:id=\"comboBoxVeiculo\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
-        assert dataFimLocacao != null : "fx:id=\"dataFimLocacao\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
-        assert dataInicLocacao != null : "fx:id=\"dataInicLocacao\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
-        assert tblVeiculoCliente != null : "fx:id=\"tblVeiculoCliente\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
-        assert valorDiaLocacao != null : "fx:id=\"valorDiaLocacao\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
+        assert comboBoxClientes != null
+                : "fx:id=\"comboBoxClientes\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
+        assert comboBoxVeiculo != null
+                : "fx:id=\"comboBoxVeiculo\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
+        assert dataFimLocacao != null
+                : "fx:id=\"dataFimLocacao\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
+        assert dataInicLocacao != null
+                : "fx:id=\"dataInicLocacao\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
+        assert tblVeiculoCliente != null
+                : "fx:id=\"tblVeiculoCliente\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
+        assert valorDiaLocacao != null
+                : "fx:id=\"valorDiaLocacao\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
 
     }
 

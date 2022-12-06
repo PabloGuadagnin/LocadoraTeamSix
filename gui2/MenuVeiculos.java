@@ -3,11 +3,12 @@ package gui2;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
@@ -58,10 +59,14 @@ public class MenuVeiculos {
     @FXML
     void initialize() {
         assert anoVeiculo != null : "fx:id=\"anoVeiculo\" was not injected: check your FXML file 'MenuVeiculos.fxml'.";
-        assert escolherTipoVeiculo2 != null : "fx:id=\"escolherTipoVeiculo2\" was not injected: check your FXML file 'MenuVeiculos.fxml'.";
-        assert placaVeiculo != null : "fx:id=\"placaVeiculo\" was not injected: check your FXML file 'MenuVeiculos.fxml'.";
-        assert tblVeiculos != null : "fx:id=\"tblVeiculos\" was not injected: check your FXML file 'MenuVeiculos.fxml'.";
-        assert valorDiaVeiculo != null : "fx:id=\"valorDiaVeiculo\" was not injected: check your FXML file 'MenuVeiculos.fxml'.";
+        assert escolherTipoVeiculo2 != null
+                : "fx:id=\"escolherTipoVeiculo2\" was not injected: check your FXML file 'MenuVeiculos.fxml'.";
+        assert placaVeiculo != null
+                : "fx:id=\"placaVeiculo\" was not injected: check your FXML file 'MenuVeiculos.fxml'.";
+        assert tblVeiculos != null
+                : "fx:id=\"tblVeiculos\" was not injected: check your FXML file 'MenuVeiculos.fxml'.";
+        assert valorDiaVeiculo != null
+                : "fx:id=\"valorDiaVeiculo\" was not injected: check your FXML file 'MenuVeiculos.fxml'.";
 
     }
 

@@ -2,11 +2,11 @@ package gui2;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javax.swing.JOptionPane;
 
 import cadastramentos.CadClientes;
 import construtores.Cliente;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +20,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/*
+ * Classe Controller responsável por mapear o menu de clientes
+ */
 public class MenuClientes {
 
     private Stage stage;
@@ -58,6 +61,12 @@ public class MenuClientes {
 
     private CadClientes listaClientes;
 
+    /**
+     * 
+     * Método responsável pelas ações de confirmação de cadastro
+     * 
+     * @param event
+     */
     @FXML
     void confirmarCadastro(ActionEvent event) {
 
@@ -97,6 +106,11 @@ public class MenuClientes {
         }
     }
 
+    /**
+     * Método responsável pelas ações de alteração de cadastro
+     * 
+     * @param event
+     */
     @FXML
     void alterarObj(ActionEvent event) {
         int i = this.tabelaClientes.getSelectionModel().getSelectedIndex();
@@ -145,6 +159,11 @@ public class MenuClientes {
         }
     }
 
+    /**
+     * Método responsável pelas ações ao deletar um cadastro
+     * 
+     * @param evet
+     */
     @FXML
     void deletaObj(ActionEvent evet) {
         int i = this.tabelaClientes.getSelectionModel().getSelectedIndex();
@@ -156,6 +175,12 @@ public class MenuClientes {
         }
     }
 
+    /**
+     * Método responsável por voltar ao menu principal
+     * 
+     * @param event
+     * @throws Exception
+     */
     @FXML
     void voltarMenuInicial(ActionEvent event) throws Exception {
 
@@ -168,6 +193,10 @@ public class MenuClientes {
 
     private ObservableList<Cliente> clientesObs;
 
+    /**
+     * Método que "substitui" o construtor em JavaFX, este, responsável pelas
+     * construções das listas e afins.
+     */
     @FXML
     void initialize() {
 
