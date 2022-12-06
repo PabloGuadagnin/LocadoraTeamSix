@@ -36,8 +36,8 @@
       <ChoiceBox fx:id="escolherTipoVeiculo2" layoutX="115.0" layoutY="239.0" onDragDetected="#getTipoVeiculoMV" prefWidth="150.0" />
       <TableView fx:id="tblVeiculos" layoutX="294.0" layoutY="82.0" prefHeight="211.0" prefWidth="302.0">
         <columns>
-          <TableColumn prefWidth="177.0" text="Placa" />
-          <TableColumn prefWidth="123.0" text="Ano" />
+          <TableColumn fx:id="colunaPlaca" prefWidth="177.0" text="Placa" />
+          <TableColumn fx:id="colunaAno" prefWidth="123.0" text="Ano" />
         </columns>
       </TableView>
    </children>

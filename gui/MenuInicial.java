@@ -8,6 +8,7 @@ import cadastramentos.CadClientes;
 import cadastramentos.CadLocacoes;
 import cadastramentos.CadVeiculos;
 import construtores.Cliente;
+import construtores.Veiculo;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,6 +34,7 @@ public class MenuInicial {
     private static CadLocacoes listaLocacoes;
     private static CadVeiculos listaVeiculos;
     private static ObservableList<Cliente> clientesObs;
+    private static ObservableList<Veiculo> veiculosObs;
 
     @FXML
     private ResourceBundle resources;
@@ -139,6 +141,14 @@ public class MenuInicial {
     public void setObsListaClietnes(ObservableList<Cliente> clientesObsNova) {
         clientesObs = (ObservableList<Cliente>) clientesObsNova;
     }
+    /**
+     * Método setter responsável por receber a lista observável de veiculos
+     * 
+     * @param veiculosObsNova
+     */
+    public void setObsListaVeiculos(ObservableList<Veiculo> veiculosObsNova) {
+        veiculosObs = (ObservableList<Veiculo>) veiculosObsNova;
+    }
 
     /**
      * Método getter responsável por retornar a lista de clientes
@@ -174,5 +184,14 @@ public class MenuInicial {
      */
     public static ObservableList<Cliente> getObsListaClietnes() {
         return clientesObs;
+    }
+
+    /**
+     * Método getter responsável por retornar a lista observável de veiculos
+     * 
+     * @return veiculosObs
+     */
+    public static ObservableList<Veiculo> getObsListaVeiculos() {
+        return veiculosObs;
     }
 }
