@@ -103,7 +103,7 @@ public class MenuClientes {
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,
-                        "Entradas inválidas, corrija e envie novamente.");
+                        "Utilize apenas números nos campos CPF, \nCNH e Telefone");
             }
         }
     }
@@ -153,7 +153,7 @@ public class MenuClientes {
 
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null,
-                            "Entradas inválidas, corrija e envie novamente.");
+                            "Utilize apenas números nos campos CPF, \nCNH e Telefone");
                 }
             }
         } else {
