@@ -45,8 +45,8 @@ public class MenuVeiculos {
         private TextField anoVeiculo;
 
         @FXML
-    public ChoiceBox<String> escolherTipoVeiculo2 = new ChoiceBox<>();
-    public String[] tipoVeiculo2 = { "Carro", "Caminhão", "Ônibus" };
+        public ChoiceBox<String> escolherTipoVeiculo2 = new ChoiceBox<>();
+        public String[] tipoVeiculo2 = { "Carro", "Caminhão", "Ônibus" };
 
         @FXML
         private TextField placaVeiculo;
@@ -99,8 +99,22 @@ public class MenuVeiculos {
 
                 String tipoVeiculo2 = escolherTipoVeiculo2.getValue();
                 System.out.println(tipoVeiculo2);
-        
-            }
+                switch (tipoVeiculo2) {
+
+                        case "Carro":
+
+                                break;
+
+                        case "Onibus":
+
+                                break;
+
+                        case "caminhão":
+
+                                break;
+
+                }
+        }
 
         @FXML
         void initialize() {
@@ -130,6 +144,6 @@ public class MenuVeiculos {
                 tblVeiculos.setItems(veiculosObs);
 
                 escolherTipoVeiculo2.getItems().addAll(tipoVeiculo2);
-        escolherTipoVeiculo2.setOnAction(this::getTipoVeiculoMV);
+                escolherTipoVeiculo2.setOnAction(this::getTipoVeiculoMV);
         }
 }
