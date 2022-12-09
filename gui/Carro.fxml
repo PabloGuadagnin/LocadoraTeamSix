@@ -22,15 +22,14 @@
             <Font size="32.0" />
          </font>
       </Text>
-      <TextField fx:id="placaVeiculo" layoutX="116.0" layoutY="114.0" />
+      <TextField fx:id="nPassageiros" layoutX="116.0" layoutY="114.0" />
       <Text fill="WHITE" layoutX="21.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de passageiros" />
-      <TextField fx:id="anoVeiculo" layoutX="116.0" layoutY="157.0" />
+      <TextField fx:id="nPortas" layoutX="116.0" layoutY="157.0" />
       <Text fill="WHITE" layoutX="70.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° portas" />
-      <TextField fx:id="valorDiaVeiculo" layoutX="116.0" layoutY="199.0" />
+      <TextField fx:id="kmL" layoutX="116.0" layoutY="199.0" />
       <Text fill="WHITE" layoutX="86.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Km/L" />
       <Text fill="WHITE" layoutX="69.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ar Cond." />
-      <Button layoutX="38.0" layoutY="316.0" mnemonicParsing="false" onAction="#confirmarCadastro" prefHeight="56.0" prefWidth="136.0" text="CADASTRAR" />
-      <Button layoutX="207.0" layoutY="316.0" mnemonicParsing="false" onAction="#voltarMenuInicial" prefHeight="56.0" prefWidth="136.0" text="VOLTAR" />
-      <ChoiceBox fx:id="escolherTipoVeiculo2" layoutX="115.0" layoutY="239.0" onDragDetected="#getTipoVeiculoMV" prefWidth="150.0" />
+      <Button fx:id="ok" layoutX="123.0" layoutY="349.0" mnemonicParsing="false" onAction="#cadastrasCarro" prefHeight="56.0" prefWidth="136.0" text="OK" />
+      <ChoiceBox fx:id="arCond" layoutX="115.0" layoutY="239.0" onDragDetected="#getArCond" prefWidth="150.0" />
    </children>
 </AnchorPane>

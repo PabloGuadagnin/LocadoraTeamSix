@@ -25,7 +25,6 @@
       <Text fill="WHITE" layoutX="53.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de eixos" />
       <TextField fx:id="anoVeiculo" layoutX="116.0" layoutY="157.0" />
       <Text fill="WHITE" layoutX="57.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carga Max." />
-      <Button layoutX="38.0" layoutY="316.0" mnemonicParsing="false" onAction="#confirmarCadastro" prefHeight="56.0" prefWidth="136.0" text="CADASTRAR" />
-      <Button layoutX="207.0" layoutY="316.0" mnemonicParsing="false" onAction="#voltarMenuInicial" prefHeight="56.0" prefWidth="136.0" text="VOLTAR" />
+      <Button fx:id="ok" layoutX="123.0" layoutY="349.0" mnemonicParsing="false" onAction="#cadastrarLocacao" prefHeight="56.0" prefWidth="136.0" text="OK" />
    </children>
 </AnchorPane>

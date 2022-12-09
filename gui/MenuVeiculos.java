@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -59,6 +60,34 @@ public class MenuVeiculos {
 
         private CadVeiculos listaVeiculos;
 
+        // Controller Carro
+        @FXML
+        private ChoiceBox<?> arCond;
+    
+        @FXML
+        private TextField kmL;
+    
+        @FXML
+        private TextField nPassageiros;
+    
+        @FXML
+        private TextField nPortas;
+    
+        @FXML
+        private Button ok;
+    
+        @FXML
+        void cadastrasCarro(ActionEvent event) {
+    
+        }
+    
+        @FXML
+        void getArCond(MouseEvent event) {
+    
+        }
+    
+        // --------------------------
+
         @FXML
         void confirmarCadastro(ActionEvent event) {
                 if (this.anoVeiculo.getText().equals("") || this.placaVeiculo.getText().equals("")
@@ -102,7 +131,15 @@ public class MenuVeiculos {
                 switch (tipoVeiculo2) {
 
                         case "Carro":
-
+                                try {
+                                        root = FXMLLoader.load(getClass().getResource("Carro.fxml"));
+                                } catch (IOException e) {
+                                        System.out.println(e);
+                                }
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
                                 break;
 
                         case "Onibus":
