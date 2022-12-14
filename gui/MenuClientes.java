@@ -117,6 +117,7 @@ public class MenuClientes {
     void alterarObj(ActionEvent event) {
         String x;
         int i = this.tabelaClientes.getSelectionModel().getSelectedIndex();
+        Cliente c = this.tabelaClientes.getSelectionModel().getSelectedItem();
 
         if (i >= 0) {
             if (this.nomeCliente.getText().equals("") || this.cpfCliente.getText().equals("") ||
@@ -129,6 +130,8 @@ public class MenuClientes {
                 this.enderecoCliente.setText(clientesObs.get(i).getEndereco());
                 this.telefoneCliente.setText(x = "" + clientesObs.get(i).getTelefone());
 
+                this.listaClientes.remove(c.getCpf());
+
                 JOptionPane.showMessageDialog(null,
                         "Altere o que desejar.");
             } else {
@@ -139,6 +142,8 @@ public class MenuClientes {
 
                     this.clientesObs.add(i, novoCliente);
                     this.clientesObs.remove(i + 1);
+                    
+                    this.listaClientes.add(novoCliente);
 
                     this.nomeCliente.clear();
                     this.cpfCliente.clear();
@@ -170,8 +175,10 @@ public class MenuClientes {
     @FXML
     void deletaObj(ActionEvent evet) {
         int i = this.tabelaClientes.getSelectionModel().getSelectedIndex();
+        Cliente c = this.tabelaClientes.getSelectionModel().getSelectedItem();
         if (i >= 0) {
             this.clientesObs.remove(i);
+            this.listaClientes.remove(c.getCpf());
         } else {
             JOptionPane.showMessageDialog(null,
                     "Selecione um cliente para remover.");
