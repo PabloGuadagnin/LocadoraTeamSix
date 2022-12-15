@@ -85,7 +85,27 @@ public class CadClientes implements IClientes {
     	Cliente c = get(cpf);
     	c.setNome(nome);    	
     }
-    
+
+    public void alterarCpf(long cpf, long cpfNovo) {
+        Cliente c = get(cpf);
+    	c.setCpf(cpfNovo);    
+    }
+
+    public void alterarCnh(long cpf, long cnh) {
+        Cliente c = get(cpf);
+    	c.setCnh(cnh);    
+    }
+
+    public void alterarEndereco(long cpf, String endereco) {
+        Cliente c = get(cpf);
+    	c.setEndereco(endereco);    
+    }
+
+    public void alterarTelefone(long cpf, long telefone) {
+        Cliente c = get(cpf);
+    	c.setTelefone(telefone);    
+    }
+
     public ArrayList<Cliente> getListaCLientes(){
     	return listaClientes;
     }

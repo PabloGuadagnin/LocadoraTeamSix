@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -28,6 +29,9 @@ public class MenuClientes {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @FXML
+    private Button btCadastrar;
 
     @FXML
     private ResourceBundle resources;
@@ -51,10 +55,10 @@ public class MenuClientes {
     private TableView<Cliente> tabelaClientes;
 
     @FXML
-    private TableColumn colunaCPF;
+    private TableColumn<Cliente, String> colunaCPF;
 
     @FXML
-    private TableColumn colunaNome;
+    private TableColumn<Cliente, String> colunaNome;
 
     @FXML
     private TextField telefoneCliente;
@@ -115,7 +119,6 @@ public class MenuClientes {
      */
     @FXML
     void alterarObj(ActionEvent event) {
-        String x;
         int i = this.tabelaClientes.getSelectionModel().getSelectedIndex();
         Cliente c = this.tabelaClientes.getSelectionModel().getSelectedItem();
 
@@ -125,37 +128,52 @@ public class MenuClientes {
                     this.telefoneCliente.getText().equals("")) {
 
                 this.nomeCliente.setText(clientesObs.get(i).getNome());
-                this.cpfCliente.setText(x = "" + clientesObs.get(i).getCpf());
-                this.cnhCliente.setText(x = "" + clientesObs.get(i).getCnh());
+                this.cpfCliente.setText("" + clientesObs.get(i).getCpf());
+                this.cnhCliente.setText("" + clientesObs.get(i).getCnh());
                 this.enderecoCliente.setText(clientesObs.get(i).getEndereco());
-                this.telefoneCliente.setText(x = "" + clientesObs.get(i).getTelefone());
+                this.telefoneCliente.setText("" + clientesObs.get(i).getTelefone());
 
-                this.listaClientes.remove(c.getCpf());
+                // this.listaClientes.remove(c.getCpf());
 
                 JOptionPane.showMessageDialog(null,
-                        "Altere o que desejar.");
+                        "Altere o que desejar, após, \nclique em alterar para salvar.");
             } else {
                 try {
-                    Cliente novoCliente = new Cliente(this.nomeCliente.getText(),
-                            Long.parseLong(this.cpfCliente.getText()), Long.parseLong(this.cnhCliente.getText()),
-                            this.enderecoCliente.getText(), Long.parseLong(this.telefoneCliente.getText()));
+                    // TODO Lógica
+                    if (listaClientes.existe(c.getCpf()) || listaClientes.existeCnh(c.getCnh())) {
 
-                    this.clientesObs.add(i, novoCliente);
-                    this.clientesObs.remove(i + 1);
-                    
-                    this.listaClientes.add(novoCliente);
+                        JOptionPane.showMessageDialog(null, "CPF ou CNH já cadastrado(s) \nem outro Cliente");
 
-                    this.nomeCliente.clear();
-                    this.cpfCliente.clear();
-                    this.cnhCliente.clear();
-                    this.enderecoCliente.clear();
-                    this.telefoneCliente.clear();
+                    } else {
 
-                    nomeCliente.requestFocus();
+                        this.listaClientes.alterarNome(clientesObs.get(i).getCpf(), nomeCliente.getText());
+                        this.listaClientes.alterarCnh(clientesObs.get(i).getCpf(),
+                                Long.parseLong(this.cnhCliente.getText()));
+                        this.listaClientes.alterarEndereco(clientesObs.get(i).getCpf(), nomeCliente.getText());
+                        this.listaClientes.alterarTelefone(clientesObs.get(i).getCpf(),
+                                Long.parseLong(this.telefoneCliente.getText()));
+                        this.listaClientes.alterarCpf(clientesObs.get(i).getCpf(),
+                                Long.parseLong(this.cpfCliente.getText()));
 
-                    JOptionPane.showMessageDialog(null, "Cliente "
-                            + novoCliente.getNome() + " alterado com sucesso.");
+                        Cliente novoCliente = new Cliente(this.nomeCliente.getText(),
+                                Long.parseLong(this.cpfCliente.getText()), Long.parseLong(this.cnhCliente.getText()),
+                                this.enderecoCliente.getText(), Long.parseLong(this.telefoneCliente.getText()));
 
+                        this.clientesObs.add(i, novoCliente);
+                        this.clientesObs.remove(i + 1);
+
+                        this.nomeCliente.clear();
+                        this.cpfCliente.clear();
+                        this.cnhCliente.clear();
+                        this.enderecoCliente.clear();
+                        this.telefoneCliente.clear();
+
+                        nomeCliente.requestFocus();
+
+                        JOptionPane.showMessageDialog(null, "Cliente "
+                                + novoCliente.getNome() + " alterado com sucesso.");
+
+                    }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null,
                             "Utilize apenas números nos campos CPF, \nCNH e Telefone");
