@@ -63,29 +63,38 @@ public class MenuVeiculos {
         // Controller Carro
         @FXML
         private ChoiceBox<?> arCond;
-    
+
         @FXML
         private TextField kmL;
-    
+
         @FXML
         private TextField nPassageiros;
-    
+
         @FXML
         private TextField nPortas;
-    
+
         @FXML
         private Button ok;
-    
+
+        /**
+         * @param event
+         */
         @FXML
         void cadastrasCarro(ActionEvent event) {
-    
+
         }
-    
+
+        /**
+         * @param event
+         */
         @FXML
         void getArCond(MouseEvent event) {
-    
+
         }
-    
+
+        /**
+         * @param event
+         */
         // --------------------------
 
         @FXML
@@ -110,11 +119,18 @@ public class MenuVeiculos {
                 }
         }
 
+        /**
+         * @param event
+         */
         @FXML
         void getTipoVeiculoMV(MouseEvent event) {
 
         }
 
+        /**
+         * @param event
+         * @throws IOException
+         */
         @FXML
         void voltarMenuInicial(ActionEvent event) throws IOException {
                 root = FXMLLoader.load(getClass().getResource("MenuInicial.fxml"));
@@ -124,6 +140,9 @@ public class MenuVeiculos {
                 stage.show();
         }
 
+        /**
+         * @param event
+         */
         public void getTipoVeiculoMV(ActionEvent event) {
 
                 String tipoVeiculo2 = escolherTipoVeiculo2.getValue();
@@ -136,10 +155,10 @@ public class MenuVeiculos {
                                 } catch (IOException e) {
                                         System.out.println(e);
                                 }
-                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
+                                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
                                 break;
 
                         case "Onibus":
@@ -153,6 +172,10 @@ public class MenuVeiculos {
                 }
         }
 
+        /**
+         * Método que "substitui" o construtor em JavaFX, este, responsável pelas
+         * construções das listas e afins.
+         */
         @FXML
         void initialize() {
                 assert anoVeiculo != null
@@ -165,11 +188,6 @@ public class MenuVeiculos {
                                 : "fx:id=\"tblVeiculos\" was not injected: check your FXML file 'MenuVeiculos.fxml'.";
                 assert valorDiaVeiculo != null
                                 : "fx:id=\"valorDiaVeiculo\" was not injected: check your FXML file 'MenuVeiculos.fxml'.";
-
-                /**
-                 * Método que "substitui" o construtor em JavaFX, este, responsável pelas
-                 * construções das listas e afins.
-                 */
 
                 listaVeiculos = MenuInicial.getListaVeiculos();
 

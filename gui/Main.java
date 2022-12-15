@@ -22,12 +22,12 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see javafx.application.Application#start(javafx.stage.Stage)
+    /**
      * 
      * Método responsável por inicializar o programa JavaFX
+     * 
+     * @param primaryStage
+     * @throws Exception
      */
     @Override
     public void start(Stage primaryStage) throws Exception {

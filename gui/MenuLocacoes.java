@@ -45,26 +45,47 @@ public class MenuLocacoes {
     @FXML
     private Label valorDiaLocacao;
 
+    
+    /** 
+     * @param event
+     */
     @FXML
     void Confirmar(ActionEvent event) {
 
     }
 
+    
+    /** 
+     * @param event
+     */
     @FXML
     void getDataFinalLocacao(ActionEvent event) {
 
     }
 
+    
+    /** 
+     * @param event
+     */
     @FXML
     void getDataInicialLocacao(ActionEvent event) {
 
     }
 
+    
+    /** 
+     * @param event
+     */
     @FXML
     void getValorDiaria(ActionEvent event) {
 
     }
 
+    
+    /** 
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void voltarMenuInicial(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("MenuInicial.fxml"));
