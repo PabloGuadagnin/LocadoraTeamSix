@@ -8,36 +8,36 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="430.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuInicial">
+<VBox prefHeight="430.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuInicial">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="628.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="957.0">
          <children>
-            <ImageView fitHeight="439.0" fitWidth="656.0" layoutX="-27.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="651.0" fitWidth="957.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../gui/fundo.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="169.0" fitWidth="350.0" layoutX="139.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="285.0" fitWidth="544.0" layoutX="218.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../gui/bemvindo.png" />
                </image>
             </ImageView>
-            <Label layoutX="180.0" layoutY="190.0" prefHeight="43.0" prefWidth="269.0" text="O que gostaria de fazer ?" textAlignment="CENTER" textFill="#ff0202">
+            <Label layoutX="322.0" layoutY="287.0" prefHeight="66.0" prefWidth="338.0" text="Selecione uma Opção" textAlignment="CENTER" textFill="#ff0202">
                <font>
-                  <Font size="24.0" />
+                  <Font size="35.0" />
                </font>
             </Label>
-            <Button fx:id="botaoLocacao" layoutX="180.0" layoutY="316.0" mnemonicParsing="false" onAction="#cadastrarLocacao" prefHeight="43.0" prefWidth="269.0" text="LOCAÇÕES">
+            <Button fx:id="botaoLocacao" layoutX="357.0" layoutY="490.0" mnemonicParsing="false" onAction="#cadastrarLocacao" prefHeight="87.0" prefWidth="269.0" text="LOCAÇÕES">
                <font>
                   <Font size="23.0" />
                </font>
             </Button>
-            <Button layoutX="29.0" layoutY="233.0" mnemonicParsing="false" onAction="#cadastrarClientes" prefHeight="43.0" prefWidth="269.0" text="CLIENTES">
+            <Button layoutX="180.0" layoutY="382.0" mnemonicParsing="false" onAction="#cadastrarClientes" prefHeight="87.0" prefWidth="269.0" text="CLIENTES">
                <font>
                   <Font size="23.0" />
                </font>
             </Button>
-            <Button layoutX="325.0" layoutY="233.0" mnemonicParsing="false" onAction="#cadastrarVeiculos" prefHeight="43.0" prefWidth="269.0" text="VEÍCULOS">
+            <Button layoutX="526.0" layoutY="382.0" mnemonicParsing="false" onAction="#cadastrarVeiculos" prefHeight="87.0" prefWidth="269.0" text="VEÍCULOS">
                <font>
                   <Font size="23.0" />
                </font>
