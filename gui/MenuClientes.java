@@ -123,7 +123,7 @@ public class MenuClientes {
     @FXML
     void alterarObj(ActionEvent event) {
         int i = this.tabelaClientes.getSelectionModel().getSelectedIndex();
-        Cliente c = this.tabelaClientes.getSelectionModel().getSelectedItem();
+    //    Cliente c = this.tabelaClientes.getSelectionModel().getSelectedItem();
 
         if (i >= 0) {
             if (this.nomeCliente.getText().equals("") || this.cpfCliente.getText().equals("") ||

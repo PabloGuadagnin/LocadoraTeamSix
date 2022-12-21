@@ -1,9 +1,14 @@
 package gui;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
+import cadastramentos.CadClientes;
+import cadastramentos.CadLocacoes;
+import cadastramentos.CadVeiculos;
+import construtores.Cliente;
+import construtores.Locacao;
+import construtores.Veiculo;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,19 +18,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class MenuLocacoes {
+
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private ComboBox<?> comboBoxClientes;
@@ -40,52 +42,40 @@ public class MenuLocacoes {
     private DatePicker dataInicLocacao;
 
     @FXML
-    private TableView<?> tblVeiculoCliente;
+    private TableView<Locacao> tblVeiculoCliente;
+
+    @FXML
+    private TableColumn<Locacao, String> colunaVeiculo;
+
+    @FXML
+    private TableColumn<Locacao, String> colunaCliente;
 
     @FXML
     private Label valorDiaLocacao;
 
-    
-    /** 
-     * @param event
-     */
+    private CadClientes listaClientes;
+    private CadVeiculos listaVeiculos;
+    private CadLocacoes listaLocacoes;
+
+    private ObservableList<Cliente> clientesObs;
+    private ObservableList<Veiculo> veiculosObs;
+    private ObservableList<Locacao> locacoesObs;
+
     @FXML
     void Confirmar(ActionEvent event) {
 
     }
 
-    
-    /** 
-     * @param event
-     */
     @FXML
     void getDataFinalLocacao(ActionEvent event) {
 
     }
 
-    
-    /** 
-     * @param event
-     */
     @FXML
     void getDataInicialLocacao(ActionEvent event) {
 
     }
 
-    
-    /** 
-     * @param event
-     */
-    @FXML
-    void getValorDiaria(ActionEvent event) {
-
-    }
-
-    
-    /** 
-     * @param event
-     * @throws IOException
-     */
     @FXML
     void voltarMenuInicial(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("MenuInicial.fxml"));
@@ -95,21 +85,24 @@ public class MenuLocacoes {
         stage.show();
     }
 
+    /**
+     * Método que "substitui" o construtor em JavaFX, este, responsável pelas
+     * construções das listas e afins.
+     */
     @FXML
     void initialize() {
-        assert comboBoxClientes != null
-                : "fx:id=\"comboBoxClientes\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
-        assert comboBoxVeiculo != null
-                : "fx:id=\"comboBoxVeiculo\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
-        assert dataFimLocacao != null
-                : "fx:id=\"dataFimLocacao\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
-        assert dataInicLocacao != null
-                : "fx:id=\"dataInicLocacao\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
-        assert tblVeiculoCliente != null
-                : "fx:id=\"tblVeiculoCliente\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
-        assert valorDiaLocacao != null
-                : "fx:id=\"valorDiaLocacao\" was not injected: check your FXML file 'MenuLocacoes.fxml'.";
 
+        listaClientes = MenuInicial.getListaClientes();
+        clientesObs = MenuInicial.getObsListaClietnes();
+
+        listaVeiculos = MenuInicial.getListaVeiculos();
+        veiculosObs = MenuInicial.getObsListaVeiculos();
+
+        listaLocacoes = MenuInicial.getListaLocacoes();
+        locacoesObs = MenuInicial.getObsListaLocacoes();
+
+        colunaVeiculo.setCellValueFactory(new PropertyValueFactory<Locacao, String>("veiculo"));
+        colunaCliente.setCellValueFactory(new PropertyValueFactory<Locacao, String>("cliente"));
     }
 
 }
