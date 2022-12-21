@@ -3,10 +3,10 @@ package construtores;
 public class Carro extends Veiculo {
     private int numeroPassageiros;
     private int numeroPortas;
-    private double kmPlt;
+    private int kmPlt;
     private boolean arCond;
 
-    public Carro(int numeroPassageiros, int numeroPortas, double kmPlt, boolean arCond,
+    public Carro(int numeroPassageiros, int numeroPortas, int kmPlt, boolean arCond,
             String placa, int ano, int valorDiaria) {
         super(placa, ano, valorDiaria);
         this.numeroPassageiros = numeroPassageiros;
@@ -61,7 +61,7 @@ public class Carro extends Veiculo {
     /**
      * @param kmPlt Seta a média de km por litro do veículo
      */
-    public void setKmPlt(double kmPlt) {
+    public void setKmPlt(int kmPlt) {
         try {
             this.kmPlt = kmPlt;
         } catch (Exception e) {

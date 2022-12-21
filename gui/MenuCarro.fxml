@@ -58,8 +58,8 @@
          <font>
             <Font size="20.0" />
          </font></Text>
-      <ChoiceBox fx:id="arCond" layoutX="432.0" layoutY="393.0" onDragDetected="#getArCond" prefHeight="47.0" prefWidth="197.0" />
-      <Button fx:id="ok" layoutX="141.0" layoutY="522.0" mnemonicParsing="false" onAction="#cadastrasCarro" prefHeight="80.0" prefWidth="188.0" text="CADASTRAR">
+      <ChoiceBox fx:id="arCond" layoutX="432.0" layoutY="393.0" prefHeight="47.0" prefWidth="197.0" />
+      <Button layoutX="141.0" layoutY="522.0" mnemonicParsing="false" onAction="#confirmarCadastro" prefHeight="80.0" prefWidth="188.0" text="CADASTRAR">
          <font>
             <Font size="20.0" />
          </font></Button>

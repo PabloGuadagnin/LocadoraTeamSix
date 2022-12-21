@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,14 +8,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="639.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuOnibus">
+<AnchorPane prefHeight="639.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuCaminhao">
    <children>
       <ImageView fitHeight="671.0" fitWidth="957.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@fundo.jpg" />
          </image>
       </ImageView>
-      <Text fill="RED" layoutX="77.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área de Cadastro de Ônibus" wrappingWidth="414.8098602294922">
+      <Text fill="RED" layoutX="77.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Área de Cadastro de Caminhões" wrappingWidth="414.8098602294922">
          <font>
             <Font size="32.0" />
          </font>
@@ -39,16 +38,16 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="428.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de passageiros:">
+      <Text fill="WHITE" layoutX="458.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carga Máxima:">
          <font>
             <Font size="20.0" />
          </font></Text>
-      <TextField fx:id="nPassageiros" layoutX="602.0" layoutY="209.0" prefHeight="47.0" prefWidth="197.0" />
-      <Text fill="WHITE" layoutX="62.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ar Cond.:">
+      <TextField fx:id="cargaMax" layoutX="604.0" layoutY="212.0" prefHeight="47.0" prefWidth="197.0" />
+      <Text fill="WHITE" layoutX="483.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° Eixos:">
          <font>
             <Font size="20.0" />
          </font></Text>
-      <ChoiceBox fx:id="arCond" layoutX="165.0" layoutY="377.0" prefHeight="47.0" prefWidth="197.0" />
+      <TextField fx:id="nEixos" layoutX="604.0" layoutY="278.0" prefHeight="47.0" prefWidth="197.0" />
       <Button layoutX="141.0" layoutY="522.0" mnemonicParsing="false" onAction="#confirmarCadastro" prefHeight="80.0" prefWidth="188.0" text="CADASTRAR">
          <font>
             <Font size="20.0" />
@@ -58,17 +57,5 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Text fill="WHITE" layoutX="499.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wi-fi:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <ChoiceBox fx:id="wifi" layoutX="602.0" layoutY="352.0" prefHeight="47.0" prefWidth="197.0" />
-      <Text fill="WHITE" layoutX="479.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <ChoiceBox fx:id="categoria" layoutX="602.0" layoutY="281.0" prefHeight="47.0" prefWidth="197.0" />
    </children>
 </AnchorPane>

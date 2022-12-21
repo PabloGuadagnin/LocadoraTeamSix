@@ -1,11 +1,13 @@
 package gui;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
 import cadastramentos.CadVeiculos;
-import construtores.Carro;
+import construtores.Onibus;
 import construtores.Veiculo;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +20,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class MenuCarro {
+public class MenuOnibus {
 
     private Stage stage;
     private Scene scene;
@@ -28,29 +30,80 @@ public class MenuCarro {
     private ObservableList<Veiculo> veiculosObs;
 
     private boolean finalArCond;
+    private boolean finalWiFi;
+    private String finalCategoria;
+
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
+
+    @FXML
+    private ChoiceBox<String> arCond;
+
+    @FXML
+    private ChoiceBox<String> categoria;
+
+    @FXML
+    private ChoiceBox<String> wifi;
+
+    private String[] simOuNao = { "Sim", "Não" };
+    private String[] categoriaOnibus = { "Leito", "Executivo", "Convencional" };
 
     @FXML
     private TextField anoVeiculo;
 
     @FXML
-    private ChoiceBox<String> arCond;
-
-    private String[] escolha = { "Sim", "Não" };
-
-    @FXML
-    private TextField kmL;
-
-    @FXML
     private TextField nPassageiros;
-
-    @FXML
-    private TextField nPortas;
 
     @FXML
     private TextField placaVeiculo;
 
     @FXML
     private TextField valorDiaVeiculo;
+
+    @FXML
+    void confirmarCadastro(ActionEvent event) {
+        if (this.anoVeiculo.getText().equals("") || this.placaVeiculo.getText().equals("")
+                || this.valorDiaVeiculo.getText().equals("") || this.nPassageiros.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Todos os campos são obrigatórios.");
+        } else {
+            try {
+                if (listaVeiculos.existe(placaVeiculo.getText())) {
+                    JOptionPane.showMessageDialog(null,
+                            "A placa já existe no banco de dados.");
+                } else {
+                    Veiculo novoOnibus = new Onibus(Integer.parseInt(this.nPassageiros.getText()), finalCategoria,
+                            finalWiFi,
+                            finalArCond,
+                            this.placaVeiculo.getText(), Integer.parseInt(this.anoVeiculo.getText()),
+                            Integer.parseInt(this.valorDiaVeiculo.getText()));
+
+                    this.veiculosObs.add(novoOnibus);
+
+                    this.listaVeiculos.add(novoOnibus);
+
+                    this.nPassageiros.clear();
+                    this.placaVeiculo.clear();
+                    this.anoVeiculo.clear();
+                    this.valorDiaVeiculo.clear();
+                    this.arCond.setValue(null);
+                    this.categoria.setValue(null);
+                    this.wifi.setValue(null);
+
+                    placaVeiculo.requestFocus();
+
+                    JOptionPane.showMessageDialog(null, "Ônibus placa "
+                            + novoOnibus.getPlaca() + " cadastrado com sucesso.");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,
+                        "Utilize apenas números inteiros\n nos campos numéricos");
+            }
+        }
+
+    }
 
     @FXML
     void voltarMenuInicial(ActionEvent event) throws IOException {
@@ -62,57 +115,19 @@ public class MenuCarro {
     }
 
     @FXML
-    void confirmarCadastro(ActionEvent event) {
-        if (this.anoVeiculo.getText().equals("") || this.placaVeiculo.getText().equals("")
-                || this.valorDiaVeiculo.getText().equals("") || this.nPassageiros.getText().equals("")
-                || this.kmL.getText().equals("") || this.nPortas.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Todos os campos são obrigatórios.");
-        } else {
-            try {
-                if (listaVeiculos.existe(placaVeiculo.getText())) {
-                    JOptionPane.showMessageDialog(null,
-                            "A placa já existe no banco de dados.");
-                } else {
-                    Veiculo novoCarro = new Carro(Integer.parseInt(this.nPassageiros.getText()),
-                            Integer.parseInt(this.nPortas.getText()), Integer.parseInt(this.kmL.getText()), finalArCond,
-                            this.placaVeiculo.getText(), Integer.parseInt(this.anoVeiculo.getText()),
-                            Integer.parseInt(this.valorDiaVeiculo.getText()));
-
-                    this.veiculosObs.add(novoCarro);
-
-                    this.listaVeiculos.add(novoCarro);
-
-                    this.nPassageiros.clear();
-                    this.nPortas.clear();
-                    this.kmL.clear();
-                    this.placaVeiculo.clear();
-                    this.anoVeiculo.clear();
-                    this.valorDiaVeiculo.clear();
-
-                    placaVeiculo.requestFocus();
-
-                    JOptionPane.showMessageDialog(null, "Carro placa "
-                            + novoCarro.getPlaca() + " cadastrado com sucesso.");
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,
-                        "Utilize apenas números inteiros\n nos campos numéricos");
-            }
-        }
-    }
-
-    /**
-     * Método que "substitui" o construtor em JavaFX, este, responsável pelas
-     * construções das listas e afins.
-     */
-    @FXML
     void initialize() {
         listaVeiculos = MenuInicial.getListaVeiculos();
 
         veiculosObs = MenuInicial.getObsListaVeiculos();
 
-        arCond.getItems().addAll(escolha);
+        arCond.getItems().addAll(simOuNao);
         arCond.setOnAction(this::getEscolharArCond);
+
+        wifi.getItems().addAll(simOuNao);
+        wifi.setOnAction(this::getEscolhaWiFi);
+
+        categoria.getItems().addAll(categoriaOnibus);
+        categoria.setOnAction(this::getCategoria);
     }
 
     public void getEscolharArCond(ActionEvent event) {
@@ -123,5 +138,19 @@ public class MenuCarro {
         } else {
             finalArCond = false;
         }
+    }
+
+    public void getEscolhaWiFi(ActionEvent event) {
+        String escolhaWiFi = wifi.getValue();
+
+        if (escolhaWiFi == "Sim") {
+            finalWiFi = true;
+        } else {
+            finalWiFi = false;
+        }
+    }
+
+    public void getCategoria(ActionEvent event) {
+        finalCategoria = categoria.getValue();
     }
 }

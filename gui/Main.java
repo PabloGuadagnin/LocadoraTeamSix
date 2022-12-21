@@ -7,6 +7,7 @@ import cadastramentos.CadClientes;
 import cadastramentos.CadLocacoes;
 import cadastramentos.CadVeiculos;
 import construtores.Cliente;
+import construtores.Veiculo;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,13 +48,16 @@ public class Main extends Application {
         CadLocacoes listaLocacoes = new CadLocacoes();
 
         ObservableList<Cliente> clientesObs = FXCollections.observableArrayList();
+        ObservableList<Veiculo> veiculosObs = FXCollections.observableArrayList();
 
         MenuInicial controller = loader.getController();
+        
         controller.setListaClientes(listaClientes);
         controller.setListaVeiculos(listaVeiculos);
         controller.setListaLocacoes(listaLocacoes);
 
         controller.setObsListaClietnes(clientesObs);
+        controller.setObsListaVeiculos(veiculosObs);
 
         primaryStage.setScene(scene);
         primaryStage.show();
