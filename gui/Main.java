@@ -17,8 +17,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
-/*
+/**
  * Classe principal do projeto, responsável pela inicialização do programa
+ *
+ * @author @pabloguadagnin
+ * 
  */
 public class Main extends Application {
 

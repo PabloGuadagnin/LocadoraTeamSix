@@ -19,8 +19,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-/*
+/**
  * Classe Controller responsável por mapear o menu inicial do programa
+ *
+ * @author @pabloguadagnin
+ * 
  */
 public class MenuInicial {
 

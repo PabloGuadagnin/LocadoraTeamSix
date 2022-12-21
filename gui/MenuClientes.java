@@ -21,8 +21,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-/*
+/**
  * Classe Controller responsável por mapear o menu de clientes
+ *
+ * @author @pabloguadagnin
+ * 
  */
 public class MenuClientes {
 
