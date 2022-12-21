@@ -4,104 +4,91 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javax.swing.JOptionPane;
-
-import cadastramentos.*;
-import construtores.*;
+import construtores.Veiculo;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-/**
- * Classe responsável por controlar a interface gráfica JavaFX ( Controller )
- */
-public class MenuVeiculos implements Initializable {
+public class MenuVeiculos {
+        private ObservableList<Veiculo> veiculosObs;
+        private Stage stage;
+        private Scene scene;
+        private Parent root;
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+        @FXML
+        private ResourceBundle resources;
 
-    private CadVeiculos listaVeiculos = new CadVeiculos();
+        @FXML
+        private URL location;
 
-    Veiculo veiculo = new Onibus(0, null, false, false, null, 0, 0);
-    
-    public MenuVeiculos(){
-    }
+        @FXML
+        private TableColumn<Veiculo, String> colunaAno;
 
-    public MenuVeiculos(CadVeiculos listaVeiculos) {
-        this.listaVeiculos = listaVeiculos;
-    }
+        @FXML
+        private TableColumn<Veiculo, String> colunaPlaca;
 
-    // Cadastro de Veículos
-    @FXML
-    private TableView<?> tblVeiculos;
+        @FXML
+        private TableView<Veiculo> tblVeiculos;
 
-    @FXML
-    private TextField anoVeiculo;
+        @FXML
+        void menuCaminhao(ActionEvent event) throws IOException {
+                root = FXMLLoader.load(getClass().getResource("MenuCaminhao.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+        }
 
-    @FXML
-    private TextField placaVeiculo;
+        @FXML
+        void menuCarro(ActionEvent event) throws IOException {
+                root = FXMLLoader.load(getClass().getResource("MenuCarro.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+        }
 
-    @FXML
-    private TextField valorDiaVeiculo;
+        @FXML
+        void menuOnibus(ActionEvent event) throws IOException {
+                root = FXMLLoader.load(getClass().getResource("MenuOnibus.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+        }
 
-    @FXML
-    public ChoiceBox<String> escolherTipoVeiculo2 = new ChoiceBox<>();
-    public String[] tipoVeiculo2 = { "Carro", "Caminhão", "Ônibus" };
+        /**
+         * @param event
+         * @throws IOException
+         */
+        @FXML
+        void voltarMenuInicial(ActionEvent event) throws IOException {
+                root = FXMLLoader.load(getClass().getResource("MenuInicial.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+        }
 
-    @FXML
-    void confirmarCadastro(ActionEvent event) {
-        veiculo.setPlaca(placaVeiculo.getText());
-     //   veiculo.setAno(anoVeiculo.getText());
-     //   veiculo.setValorDiaria(valorDiaVeiculo.getText());
+        /**
+         * Método que "substitui" o construtor em JavaFX, este, responsável pelas
+         * construções das listas e afins.
+         */
+        @FXML
+        void initialize() {
+                veiculosObs = MenuInicial.getObsListaVeiculos();
 
-        listaVeiculos.add(veiculo);
+                colunaAno.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("ano"));
+                colunaPlaca.setCellValueFactory(new PropertyValueFactory<Veiculo, String>("placa"));
 
-        JOptionPane.showMessageDialog(null, "Veiculo "
-            + veiculo.getPlaca() + " cadastrado com sucesso.");
-
-        placaVeiculo.setText("");
-        anoVeiculo.setText("");
-        valorDiaVeiculo.setText("");
-
-        placaVeiculo.requestFocus();
-    }
-
-    @FXML
-    void voltarMenuInicial(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("layoutInicio.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void getValorDiaLocacao(MouseEvent event) {
-        
-    }
-
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-
-        escolherTipoVeiculo2.getItems().addAll(tipoVeiculo2);
-        escolherTipoVeiculo2.setOnAction(this::getTipoVeiculoMV);
-
-    }
-
-    public void getTipoVeiculoMV(ActionEvent event) {
-
-        String tipoVeiculo2 = escolherTipoVeiculo2.getValue();
-        System.out.println(tipoVeiculo2);
-
-    }
+                tblVeiculos.setItems(veiculosObs);
+        }
 }

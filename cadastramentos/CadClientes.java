@@ -28,17 +28,17 @@ public class CadClientes implements IClientes {
         }
     }
 
-    public Cliente get(String CPF) {
+    public Cliente get(long CPF) {
         for (Cliente c : listaClientes)
-            if (c.getCpf().equals(CPF))
+            if (c.getCpf() == CPF)
                 return c;
         return null;
     }
 
     @Override
-    public String getInfo(String CPF) {
+    public String getInfo(long CPF) {
         for (Cliente c : listaClientes)
-            if (c.getCpf().equals(CPF))
+            if (c.getCpf() == CPF)
                 return c.toString();
         return null;
     }
@@ -60,25 +60,52 @@ public class CadClientes implements IClientes {
     }
 
     @Override
-    public boolean remove(String CPF) {
+    public boolean remove(long CPF) {
         Cliente c = get(CPF);
         listaClientes.remove(c);
         return true;
     }
 
     @Override
-    public boolean existe(String CPF) {
+    public boolean existe(long CPF) {
         for (Cliente c : listaClientes)
-            if (c.getCpf().equals(CPF))
+            if (c.getCpf() == CPF)
                 return true;
         return false;
     }
 
-    public void alterarNome(String cpf, String nome) {
+    public boolean existeCnh(long CNH) {
+        for (Cliente c : listaClientes)
+            if (c.getCnh() == CNH)
+                return true;
+        return false;
+    }
+
+    public void alterarNome(long cpf, String nome) {
     	Cliente c = get(cpf);
     	c.setNome(nome);    	
     }
-    
+
+    public void alterarCpf(long cpf, long cpfNovo) {
+        Cliente c = get(cpf);
+    	c.setCpf(cpfNovo);    
+    }
+
+    public void alterarCnh(long cpf, long cnh) {
+        Cliente c = get(cpf);
+    	c.setCnh(cnh);    
+    }
+
+    public void alterarEndereco(long cpf, String endereco) {
+        Cliente c = get(cpf);
+    	c.setEndereco(endereco);    
+    }
+
+    public void alterarTelefone(long cpf, long telefone) {
+        Cliente c = get(cpf);
+    	c.setTelefone(telefone);    
+    }
+
     public ArrayList<Cliente> getListaCLientes(){
     	return listaClientes;
     }
