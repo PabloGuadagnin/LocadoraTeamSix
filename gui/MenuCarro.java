@@ -88,6 +88,7 @@ public class MenuCarro {
                     this.placaVeiculo.clear();
                     this.anoVeiculo.clear();
                     this.valorDiaVeiculo.clear();
+                    this.arCond.setValue(null);
 
                     placaVeiculo.requestFocus();
 

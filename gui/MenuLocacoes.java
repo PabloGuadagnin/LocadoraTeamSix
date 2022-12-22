@@ -1,6 +1,11 @@
 package gui;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
+import javax.swing.JOptionPane;
 
 import cadastramentos.CadClientes;
 import cadastramentos.CadLocacoes;
@@ -15,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -29,11 +35,19 @@ public class MenuLocacoes {
     private Scene scene;
     private Parent root;
 
-    @FXML
-    private ComboBox<?> comboBoxClientes;
+    private int cod = 1;
+    private boolean finalEscolhaSeguro;
 
     @FXML
-    private ComboBox<?> comboBoxVeiculo;
+    private ComboBox<Cliente> comboBoxClientes;
+
+    @FXML
+    private ComboBox<Veiculo> comboBoxVeiculo;
+
+    @FXML
+    private ChoiceBox<String> seguro;
+
+    private String[] escolha = { "Sim", "Não" };
 
     @FXML
     private DatePicker dataFimLocacao;
@@ -63,7 +77,37 @@ public class MenuLocacoes {
 
     @FXML
     void Confirmar(ActionEvent event) {
+        Cliente c = this.comboBoxClientes.getSelectionModel().getSelectedItem();
+        Veiculo v = this.comboBoxVeiculo.getSelectionModel().getSelectedItem();
 
+        LocalDate dataInicial = dataInicLocacao.getValue();
+        String dataInicialFormatada = dataInicial.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        String dataInicialInt = dataInicialFormatada;
+        dataInicialInt = dataInicialInt.replace("-", "");
+
+        LocalDate dataFinal = dataFimLocacao.getValue();
+        String dataFinalFormatada = dataFinal.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        String dataFinalInt = dataFinalFormatada;
+        dataFinalInt = dataFinalInt.replace("-", "");
+
+        Locacao novaLocacao = new Locacao(cod, c, v, finalEscolhaSeguro, Integer.parseInt(dataInicialInt),
+                Integer.parseInt(dataFinalInt));
+
+        this.locacoesObs.add(novaLocacao);
+
+        this.listaLocacoes.add(novaLocacao);
+
+        this.comboBoxClientes.setValue(null);
+        this.comboBoxVeiculo.setValue(null);
+        this.seguro.setValue(null);
+        this.dataInicLocacao.setValue(null);
+        this.dataFimLocacao.setValue(null);
+        this.valorDiaLocacao.setText("Selecione o Período e Veículo");
+
+        JOptionPane.showMessageDialog(null, "Locação código "
+                + novaLocacao.getCodigoLocacao() + " cadastrada com sucesso.");
+
+        cod++;
     }
 
     @FXML
@@ -103,6 +147,40 @@ public class MenuLocacoes {
 
         colunaVeiculo.setCellValueFactory(new PropertyValueFactory<Locacao, String>("veiculo"));
         colunaCliente.setCellValueFactory(new PropertyValueFactory<Locacao, String>("cliente"));
+
+        comboBoxClientes.setItems(clientesObs);
+        comboBoxVeiculo.setItems(veiculosObs);
+
+        tblVeiculoCliente.setItems(locacoesObs);
+
+        seguro.getItems().addAll(escolha);
+        seguro.setOnAction(this::getEscolharSeguro);
     }
 
+    public void getEscolharSeguro(ActionEvent event) {
+        String escolhaSeguro = seguro.getValue();
+
+        if (escolhaSeguro == "Sim") {
+            finalEscolhaSeguro = true;
+        } else {
+            finalEscolhaSeguro = false;
+        }
+    }
+
+    @FXML
+    void valorTotalLocacao(ActionEvent event) {
+        try {
+            Veiculo v = this.comboBoxVeiculo.getSelectionModel().getSelectedItem();
+
+            Period periodo = Period.between(dataInicLocacao.getValue(), dataFimLocacao.getValue());
+            int dias = periodo.getDays();
+            int meses = periodo.getMonths();
+            int anos = periodo.getYears();
+
+            int total = (meses * 30) + (anos * 365) + dias;
+            int valorDiaLocacaoVeiculo = total * v.getValorDiaria();
+            valorDiaLocacao.setText("Valor é R$" + valorDiaLocacaoVeiculo);
+        } catch (Exception e) {
+        }
+    }
 }
