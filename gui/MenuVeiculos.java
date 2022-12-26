@@ -38,6 +38,12 @@ public class MenuVeiculos {
         @FXML
         private TableView<Veiculo> tblVeiculos;
 
+        /**
+         * Método responsável por abrir o Menu de cadastramento de Caminhões
+         * 
+         * @param event
+         * @throws IOException
+         */
         @FXML
         void menuCaminhao(ActionEvent event) throws IOException {
                 root = FXMLLoader.load(getClass().getResource("MenuCaminhao.fxml"));
@@ -47,6 +53,12 @@ public class MenuVeiculos {
                 stage.show();
         }
 
+        /**
+         * Método responsável por abrir o Menu de cadastramento de Carros
+         * 
+         * @param event
+         * @throws IOException
+         */
         @FXML
         void menuCarro(ActionEvent event) throws IOException {
                 root = FXMLLoader.load(getClass().getResource("MenuCarro.fxml"));
@@ -56,6 +68,12 @@ public class MenuVeiculos {
                 stage.show();
         }
 
+        /**
+         * Método responsável por abrir o Menu de cadastramento de Ônibus
+         * 
+         * @param event
+         * @throws IOException
+         */
         @FXML
         void menuOnibus(ActionEvent event) throws IOException {
                 root = FXMLLoader.load(getClass().getResource("MenuOnibus.fxml"));
@@ -66,6 +84,7 @@ public class MenuVeiculos {
         }
 
         /**
+         * Método responsável por retornar ao menu inicial
          * @param event
          * @throws IOException
          */

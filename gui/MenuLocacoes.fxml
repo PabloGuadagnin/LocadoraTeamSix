@@ -33,11 +33,11 @@
          <font>
             <Font size="18.0" />
          </font></Text>
-      <Button layoutX="52.0" layoutY="503.0" mnemonicParsing="false" onAction="#Confirmar" prefHeight="95.0" prefWidth="193.0" text="CADASTRAR">
+      <Button layoutX="75.0" layoutY="503.0" mnemonicParsing="false" onAction="#Confirmar" prefHeight="95.0" prefWidth="193.0" text="CADASTRAR">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="293.0" layoutY="503.0" mnemonicParsing="false" onAction="#voltarMenuInicial" prefHeight="95.0" prefWidth="193.0" text="VOLTAR">
+      <Button layoutX="293.0" layoutY="503.0" mnemonicParsing="false" onAction="#relatoriosLocacoes" prefHeight="43.0" prefWidth="193.0" text="RELATÓRIOS">
          <font>
             <Font size="20.0" />
          </font></Button>
@@ -73,5 +73,10 @@
          </font>
       </Text>
       <ChoiceBox fx:id="seguro" layoutX="245.0" layoutY="367.0" prefHeight="43.0" prefWidth="201.0" />
+      <Button layoutX="293.0" layoutY="554.0" mnemonicParsing="false" onAction="#voltarMenuInicial" prefHeight="43.0" prefWidth="193.0" text="VOLTAR">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

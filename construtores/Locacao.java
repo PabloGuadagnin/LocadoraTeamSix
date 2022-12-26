@@ -82,8 +82,11 @@ public class Locacao {
     }
 
     public String toString() {
-        return "Locacao [codigoLocacao=" + codigoLocacao + ", cliente=" + cliente.getNome() + ", veiculo="
-                + veiculo.getPlaca() + ", seguro="
-                + seguro + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal + "]";
+        return "Locacao [ Código = " + codigoLocacao
+                + ", Cliente = " + cliente.getNome()
+                + ", Veículo = " + veiculo.getPlaca()
+                + ", Seguro = " + seguro
+                + ", Início = " + dataInicial
+                + ", Final = " + dataFinal + " ]";
     }
 }
