@@ -58,10 +58,17 @@ public class MenuInicial {
 
     @FXML
     void cadastrarVeiculos(ActionEvent event) throws IOException {
+<<<<<<< Updated upstream
         root = FXMLLoader.load(getClass().getResource("layoutMV.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+=======
+
+        //aqui
+        MenuVei telaMenu = new MenuVei();
+        telaMenu.setVisible(true);
+>>>>>>> Stashed changes
     }
 }
