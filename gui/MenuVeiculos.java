@@ -32,8 +32,6 @@ public class MenuVeiculos implements Initializable {
 
     private CadVeiculos listaVeiculos = new CadVeiculos();
 
-    Veiculo veiculo = new Onibus(0, null, false, false, null, 0, 0);
-    
     public MenuVeiculos(){
     }
 
@@ -60,20 +58,7 @@ public class MenuVeiculos implements Initializable {
 
     @FXML
     void confirmarCadastro(ActionEvent event) {
-        veiculo.setPlaca(placaVeiculo.getText());
-     //   veiculo.setAno(anoVeiculo.getText());
-     //   veiculo.setValorDiaria(valorDiaVeiculo.getText());
-
-        listaVeiculos.add(veiculo);
-
-        JOptionPane.showMessageDialog(null, "Veiculo "
-            + veiculo.getPlaca() + " cadastrado com sucesso.");
-
-        placaVeiculo.setText("");
-        anoVeiculo.setText("");
-        valorDiaVeiculo.setText("");
-
-        placaVeiculo.requestFocus();
+        
     }
 
     @FXML

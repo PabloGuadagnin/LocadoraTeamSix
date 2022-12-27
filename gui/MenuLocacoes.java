@@ -120,15 +120,12 @@ public class MenuLocacoes implements Initializable {
     Cliente c1 = new Cliente("Pablo G", "123", "258", "Rua A", "5599");
     Cliente c2 = new Cliente("Astolfo R", "321", "963", "Rua B", "5588");
 
-    Veiculo v1 = new Onibus(30, "Viagem", false, false, "abc1234", 2022, 150);
-    Veiculo v2 = new Carro(5, 5, 15, true,"cba4321", 2021, 200);
+ 
 
     public void carregaComboBox() {
 
         listaClientes2.add(c2);
         listaClientes2.add(c1);
-        listaVeiculos2.add(v2);
-        listaVeiculos2.add(v1);
 
         obsListCliente = FXCollections.observableArrayList(listaClientes2);
         obsListVeiculo = FXCollections.observableArrayList(listaVeiculos2);
@@ -145,8 +142,6 @@ public class MenuLocacoes implements Initializable {
         int anos = periodo.getYears();
 
         int total = (meses * 30) + (anos * 365) + dias;
-        int valorDiaLocacaoVeiculo = total * v1.getValorDiaria();
-        valorDiaLocacao.setText("Valor é R$" + valorDiaLocacaoVeiculo);
 
     }
 }
