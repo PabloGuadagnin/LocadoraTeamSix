@@ -89,11 +89,8 @@ public class MenuInicial {
     @FXML
     void cadastrarVeiculos(ActionEvent event) throws IOException {
 
-        root = FXMLLoader.load(getClass().getResource("MenuVeiculos.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwingMenuVei menuvei = new SwingMenuVei();
+        menuvei.setVisible(true);
     }
 
     /**
