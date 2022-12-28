@@ -1,16 +1,15 @@
 package gui;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Dimension;
-import javax.swing.JLabel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 public class SwingMenuVei extends JFrame {
 
@@ -31,7 +30,7 @@ public class SwingMenuVei extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnNewCarro = new JButton("");
 		btnNewCarro.setBorder(null);
 		btnNewCarro.setContentAreaFilled(false);
@@ -43,7 +42,7 @@ public class SwingMenuVei extends JFrame {
 		});
 		btnNewCarro.setBounds(197, 147, 188, 37);
 		contentPane.add(btnNewCarro);
-		
+
 		JButton btnNewCaminhao = new JButton("");
 		btnNewCaminhao.setBorder(null);
 		btnNewCaminhao.addActionListener(new ActionListener() {
@@ -55,7 +54,7 @@ public class SwingMenuVei extends JFrame {
 		btnNewCaminhao.setContentAreaFilled(false);
 		btnNewCaminhao.setBounds(201, 227, 182, 36);
 		contentPane.add(btnNewCaminhao);
-		
+
 		JButton btnNewOnibus = new JButton("");
 		btnNewOnibus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -67,10 +66,10 @@ public class SwingMenuVei extends JFrame {
 		btnNewOnibus.setContentAreaFilled(false);
 		btnNewOnibus.setBounds(202, 298, 181, 40);
 		contentPane.add(btnNewOnibus);
-		
+
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setBounds(0, 0, 522, 500);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Lucas.LUSCA\\Downloads\\Colorful Clean Frame Sign Up Instagram Post.png"));
+		lblNewLabel.setIcon(new ImageIcon("imgSwing\\SwingMenuVei.png"));
 		contentPane.add(lblNewLabel);
 	}
 }
