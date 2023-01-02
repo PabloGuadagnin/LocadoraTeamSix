@@ -3,6 +3,8 @@ package gui;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,6 +17,10 @@ import javax.swing.JTextField;
 
 import cadastramentos.CadVeiculos;
 import construtores.Carro;
+import construtores.Veiculo;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 public class SwingCarro extends JFrame {
 
@@ -24,7 +30,9 @@ public class SwingCarro extends JFrame {
 	private JTextField textKmPorL;
 	private JTextField textNpassageiros;
 	private JTextField textNPortas;
+
 	private CadVeiculos listCadVeiculos;
+	private ObservableList<Veiculo> listaObsVeiculos;
 
 	/**
 	 * Launch the application.
@@ -34,6 +42,10 @@ public class SwingCarro extends JFrame {
 	 * Create the frame.
 	 */
 	public SwingCarro() {
+
+		listCadVeiculos = MenuInicial.getListaVeiculos();
+		listaObsVeiculos = MenuInicial.getObsListaVeiculos();
+
 		setMaximumSize(new Dimension(540, 540));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 540, 540);
@@ -81,7 +93,7 @@ public class SwingCarro extends JFrame {
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if (textPlacaCarro.getText().equals("") ||
 						textAnoCarro.getText().equals("") ||
 						textDiariaCarro.getText().equals("") ||
@@ -92,12 +104,12 @@ public class SwingCarro extends JFrame {
 							"Todos os campos são obrigatórios.");
 				} else {
 					boolean a = false;
-					if(chckbxNewCheckBox.isSelected()){
-						 a = true;
-					}else{
-						 a = false;
+					if (chckbxNewCheckBox.isSelected()) {
+						a = true;
+					} else {
+						a = false;
 					}
-					
+
 					Carro novoCarro = new Carro(Integer.parseInt(textNpassageiros.getText()),
 							Integer.parseInt(textNPortas.getText()),
 							Double.parseDouble(textKmPorL.getText()),
@@ -106,9 +118,11 @@ public class SwingCarro extends JFrame {
 							Integer.parseInt(textAnoCarro.getText()),
 							Integer.parseInt(textDiariaCarro.getText()));
 
+					listCadVeiculos.add(novoCarro);
+					listaObsVeiculos.add(novoCarro);
+
 					System.out.println(novoCarro.toString());
 
-					
 				}
 
 				setVisible(false);
@@ -126,6 +140,5 @@ public class SwingCarro extends JFrame {
 		lblNewLabel.setBounds(0, 0, 524, 501);
 		contentPane.add(lblNewLabel);
 
-		
 	}
 }

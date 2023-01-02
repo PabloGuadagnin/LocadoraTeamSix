@@ -8,6 +8,7 @@ import cadastramentos.CadClientes;
 import cadastramentos.CadLocacoes;
 import cadastramentos.CadVeiculos;
 import construtores.Cliente;
+import construtores.Locacao;
 import construtores.Veiculo;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,6 +39,7 @@ public class MenuInicial {
     private static CadVeiculos listaVeiculos;
     private static ObservableList<Cliente> clientesObs;
     private static ObservableList<Veiculo> veiculosObs;
+    private static ObservableList<Locacao> LocacoesObs;
 
     @FXML
     private ResourceBundle resources;
@@ -141,6 +143,7 @@ public class MenuInicial {
     public void setObsListaClietnes(ObservableList<Cliente> clientesObsNova) {
         clientesObs = (ObservableList<Cliente>) clientesObsNova;
     }
+
     /**
      * Método setter responsável por receber a lista observável de veiculos
      * 
@@ -148,6 +151,15 @@ public class MenuInicial {
      */
     public void setObsListaVeiculos(ObservableList<Veiculo> veiculosObsNova) {
         veiculosObs = (ObservableList<Veiculo>) veiculosObsNova;
+    }
+
+    /**
+     * Método setter responsável por receber a lista observável de Locações
+     * 
+     * @param veiculosObsNova
+     */
+    public void setObsListaLocacoes(ObservableList<Locacao> LocacoesObsNova) {
+        LocacoesObs = (ObservableList<Locacao>) LocacoesObsNova;
     }
 
     /**
@@ -193,5 +205,14 @@ public class MenuInicial {
      */
     public static ObservableList<Veiculo> getObsListaVeiculos() {
         return veiculosObs;
+    }
+
+    /**
+     * Método getter responsável por retornar a lista observável de Locações
+     * 
+     * @return LocacoesObs
+     */
+    public static ObservableList<Locacao> getObsListaLocacoes() {
+        return LocacoesObs;
     }
 }
