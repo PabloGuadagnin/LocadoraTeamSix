@@ -104,11 +104,8 @@ public class SwingCarro extends JFrame {
 							"Todos os campos são obrigatórios.");
 				} else {
 					boolean a = false;
-					if (chckbxNewCheckBox.isSelected()) {
-						a = true;
-					} else {
-						a = false;
-					}
+					if (chckbxNewCheckBox.isSelected()) {a = true;}
+					else {a = false;}
 
 					Carro novoCarro = new Carro(Integer.parseInt(textNpassageiros.getText()),
 							Integer.parseInt(textNPortas.getText()),

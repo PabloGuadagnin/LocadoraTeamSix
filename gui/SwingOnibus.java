@@ -15,6 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import cadastramentos.CadVeiculos;
+import construtores.Onibus;
+import construtores.Veiculo;
+import javafx.collections.ObservableList;
+
 public class SwingOnibus extends JFrame {
 
 	private JPanel contentPane;
@@ -26,6 +31,8 @@ public class SwingOnibus extends JFrame {
 	private JComboBox comboBox;
 	private JCheckBox chckbxNewCheckBox;
 	private JButton btnNewOnibusCad;
+	private CadVeiculos listCadVeiculos;
+	private ObservableList<Veiculo> listaObsVeiculos;
 
 	/**
 	 * Launch the application.
@@ -83,16 +90,36 @@ public class SwingOnibus extends JFrame {
 		btnNewOnibusCad = new JButton("");
 		btnNewOnibusCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				boolean wifi = true;
+				boolean a = true;
 				if(textPlacaBus.getText().equals("") || 
 				textAnoBus.getText().equals("") ||
 				textDiariaBus.getText().equals("") ||
 				textNPassageirosBus.getText().equals("")){
 					JOptionPane.showMessageDialog(null,
 							"Todos os campos são obrigatórios.");
-				}if (chckbxNewCheckBox.isSelected()){boolean a = true;}
-				else {boolean a = false;}
+							
+				}else{
+					 if(chckbxNewCheckBox.isSelected()){ a = true;}
+					else{ a = false;}}
 
-				
+					if(comboBoxWifi.getSelectedItem().equals("Sim")){
+						 wifi = true;
+					}else{ wifi = false;}
+
+
+					Onibus novOnibus = new Onibus(Integer.parseInt(textNPassageirosBus.getText()),
+					 comboBox.getSelectedItem()+"",
+					  wifi,
+					   a,
+					    textPlacaBus.getText(),
+						 0,
+						 Integer.parseInt(textDiariaBus.getText()));
+
+					listCadVeiculos.add(novOnibus);
+					listaObsVeiculos.add(novOnibus);
+
+					System.out.println(novOnibus.toString());
 
 
 
