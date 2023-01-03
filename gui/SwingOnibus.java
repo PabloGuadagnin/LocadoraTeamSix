@@ -10,6 +10,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -85,10 +86,13 @@ public class SwingOnibus extends JFrame {
 				if(textPlacaBus.getText().equals("") || 
 				textAnoBus.getText().equals("") ||
 				textDiariaBus.getText().equals("") ||
-				textNPassageirosBus.getText().equals("") 
-				
+				textNPassageirosBus.getText().equals("")){
+					JOptionPane.showMessageDialog(null,
+							"Todos os campos são obrigatórios.");
+				}if (chckbxNewCheckBox.isSelected()){boolean a = true;}
+				else {boolean a = false;}
 
-				)
+				
 
 
 
