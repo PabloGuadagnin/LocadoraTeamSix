@@ -62,10 +62,11 @@ public class SwingOnibus extends JFrame {
 		contentPane.add(textNPassageirosBus);
 		textNPassageirosBus.setColumns(10);
 		
-		textWifiBus = new JTextField();
-		textWifiBus.setBounds(139, 261, 86, 20);
-		contentPane.add(textWifiBus);
-		textWifiBus.setColumns(10);
+		JComboBox <String> comboBoxWifi = new JComboBox();
+		comboBoxWifi.setBounds(139, 257, 97, 22);
+		contentPane.add(comboBoxWifi);
+		comboBoxWifi.addItem("Sim");
+		comboBoxWifi.addItem("Não");
 		
 		JComboBox  <String> comboBox = new JComboBox();
 		comboBox.setBounds(357, 156, 72, 22);
@@ -81,6 +82,17 @@ public class SwingOnibus extends JFrame {
 		btnNewOnibusCad = new JButton("");
 		btnNewOnibusCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(textPlacaBus.getText().equals("") || 
+				textAnoBus.getText().equals("") ||
+				textDiariaBus.getText().equals("") ||
+				textNPassageirosBus.getText().equals("") 
+				
+
+				)
+
+
+
+
 				setVisible(false);
 			}
 		});
