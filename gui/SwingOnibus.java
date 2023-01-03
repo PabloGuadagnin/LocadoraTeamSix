@@ -67,9 +67,12 @@ public class SwingOnibus extends JFrame {
 		contentPane.add(textWifiBus);
 		textWifiBus.setColumns(10);
 		
-		comboBox = new JComboBox();
+		JComboBox  <String> comboBox = new JComboBox();
 		comboBox.setBounds(357, 156, 72, 22);
 		contentPane.add(comboBox);
+		comboBox.addItem("Leito");
+		comboBox.addItem("Semi-Leito");
+		comboBox.addItem("Executivo");
 		
 		chckbxNewCheckBox = new JCheckBox("Possui");
 		chckbxNewCheckBox.setBounds(347, 128, 82, 23);
