@@ -13,7 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import cadastramentos.CadVeiculos;
 import construtores.Caminhao;
+import construtores.Veiculo;
+import javafx.collections.ObservableList;
 
 public class SwingCaminhao extends JFrame {
 
@@ -23,6 +26,8 @@ public class SwingCaminhao extends JFrame {
 	private JTextField textDiariaCaminhao;
 	private JTextField textNEsixosCaminhao;
 	private JTextField textCargaMaxCaminhao;
+	private CadVeiculos listCadVeiculos;
+	private ObservableList<Veiculo> listaObsVeiculos;
 
 	/**
 	 * Launch the application.
@@ -33,6 +38,8 @@ public class SwingCaminhao extends JFrame {
 	 * Create the frame.
 	 */
 	public SwingCaminhao() {
+		listCadVeiculos = MenuInicial.getListaVeiculos();
+		listaObsVeiculos = MenuInicial.getObsListaVeiculos();
 		setMaximumSize(new Dimension(540, 540));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 541, 540);
@@ -83,9 +90,12 @@ public class SwingCaminhao extends JFrame {
 					Caminhao novoCaminhao = new Caminhao(Integer.parseInt(textNEsixosCaminhao.getText()),
 							Integer.parseInt(textCargaMaxCaminhao.getText()),
 							textPlacaCaminhao.getText(),
-							0,
+							Integer.parseInt((textAnoCaminhao.getText())),
 							Integer.parseInt(textDiariaCaminhao.getText()));
 
+							listCadVeiculos.add(novoCaminhao);
+							listaObsVeiculos.add(novoCaminhao);
+					
 					System.out.println(novoCaminhao.toString());
 
 					

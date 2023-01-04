@@ -41,6 +41,8 @@ public class SwingOnibus extends JFrame {
 	 * Create the frame.
 	 */
 	public SwingOnibus() {
+		listCadVeiculos = MenuInicial.getListaVeiculos();
+		listaObsVeiculos = MenuInicial.getObsListaVeiculos();
 		setMaximumSize(new Dimension(540, 540));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 539, 539);
@@ -113,7 +115,7 @@ public class SwingOnibus extends JFrame {
 					  wifi,
 					   a,
 					    textPlacaBus.getText(),
-						 0,
+						 Integer.parseInt(textAnoBus.getText()),
 						 Integer.parseInt(textDiariaBus.getText()));
 
 					listCadVeiculos.add(novOnibus);
