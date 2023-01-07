@@ -1,7 +1,7 @@
 package Testes;
 
 import cadastro.ValidaCPF;
-import excepitions.CpfInvalidoException;
+import exceptions.CpfInvalidoException;
 
 public class TestesCPF {
 

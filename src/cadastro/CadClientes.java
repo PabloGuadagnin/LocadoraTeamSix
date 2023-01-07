@@ -3,8 +3,11 @@ package cadastro;
 import java.util.LinkedList;
 
 import construtores.Cliente;
-import excepitions.ClienteInexistenteException;
-import excepitions.ListaClienteVaziaException;
+import exceptions.CampoObrigatorioException;
+import exceptions.ClienteInexistenteException;
+import exceptions.CnhInvalidaException;
+import exceptions.ListaClienteVaziaException;
+import exceptions.NomeInvalidoException;
 import interfaces.IClientes;
 
 public class CadClientes implements IClientes{
@@ -78,6 +81,22 @@ public class CadClientes implements IClientes{
     	}
     	return true;
     }
+    
+	public boolean verificarCamposObrigatorios(String nome, String cnh) throws CampoObrigatorioException, CnhInvalidaException, NomeInvalidoException {
+		if (nome.isBlank() || cnh.isBlank()) {
+			throw new CampoObrigatorioException();
+		}
+		
+		if (cnh.contains(" ")) {
+			throw new CnhInvalidaException();
+		}
+		
+		if (!nome.matches("[a-zA-Z\\s]+")) {
+			throw new NomeInvalidoException();
+		}
+			
+		return true;
+	}
     
 	@Override
 	public Cliente get(long CPF) {return null;}

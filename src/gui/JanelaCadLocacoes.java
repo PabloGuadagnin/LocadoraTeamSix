@@ -24,10 +24,10 @@ import cadastro.CadVeiculo;
 import construtores.Cliente;
 import construtores.Locacao;
 import construtores.Veiculo;
-import excepitions.ClienteInexistenteException;
-import excepitions.DataInvalidaException;
-import excepitions.VeiculoIndisponivelException;
-import excepitions.VeiculoInexistenteException;
+import exceptions.ClienteInexistenteException;
+import exceptions.DataInvalidaException;
+import exceptions.VeiculoIndisponivelException;
+import exceptions.VeiculoInexistenteException;
 
 public class JanelaCadLocacoes extends JFrame implements ActionListener {
 	

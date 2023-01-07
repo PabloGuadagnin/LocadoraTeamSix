@@ -15,9 +15,9 @@ import javax.swing.JPanel;
 import cadastro.CadClientes;
 import cadastro.CadLocacoes;
 import cadastro.CadVeiculo;
-import excepitions.SemLocacoesNoPeriodoException;
-import excepitions.SemLocacoesParaClienteException;
-import excepitions.SemLocacoesParaVeiculoException;
+import exceptions.SemLocacoesNoPeriodoException;
+import exceptions.SemLocacoesParaClienteException;
+import exceptions.SemLocacoesParaVeiculoException;
 
 
 public class JanelaRelatorio extends JFrame implements ActionListener{

@@ -12,10 +12,10 @@ import javax.swing.border.LineBorder;
 import cadastro.CadClientes;
 import cadastro.CadLocacoes;
 import cadastro.CadVeiculo;
-import excepitions.ClienteInexistenteException;
-import excepitions.ListaClienteVaziaException;
-import excepitions.ListaLocacoesVaziaException;
-import excepitions.ListaVeiculosVaziaException;
+import exceptions.ClienteInexistenteException;
+import exceptions.ListaClienteVaziaException;
+import exceptions.ListaLocacoesVaziaException;
+import exceptions.ListaVeiculosVaziaException;
 
 import javax.swing.JMenu;
 import java.awt.event.ActionListener;

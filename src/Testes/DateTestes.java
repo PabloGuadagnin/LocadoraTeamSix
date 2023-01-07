@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import cadastro.CadLocacoes;
-import excepitions.DataInvalidaException;
+import exceptions.DataInvalidaException;
 
 public class DateTestes {
 	

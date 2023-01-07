@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import cadastro.CadClientes;
 import cadastro.CadLocacoes;
 import cadastro.CadVeiculo;
-import excepitions.DataInvalidaException;
+import exceptions.DataInvalidaException;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;

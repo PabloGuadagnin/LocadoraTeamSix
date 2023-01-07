@@ -15,8 +15,8 @@ import javax.swing.JPanel;
 
 import cadastro.CadClientes;
 import cadastro.ValidaCPF;
-import excepitions.ClienteInexistenteException;
-import excepitions.CpfInvalidoException;
+import exceptions.ClienteInexistenteException;
+import exceptions.CpfInvalidoException;
 
 public class JanelaVerificaCpf extends JFrame implements ActionListener{
 	

@@ -19,8 +19,8 @@ import javax.swing.SwingUtilities;
 
 import cadastro.CadVeiculo;
 import construtores.Carro;
-import excepitions.AnoInvalidoException;
-import excepitions.ValorDiariaException;
+import exceptions.AnoInvalidoException;
+import exceptions.ValorDiariaException;
 
 public class JanelaCadCarro extends JFrame implements ActionListener {
 	

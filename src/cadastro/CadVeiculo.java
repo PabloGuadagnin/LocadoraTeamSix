@@ -4,11 +4,11 @@ import java.util.LinkedList;
 
 import construtores.Cliente;
 import construtores.Veiculo;
-import excepitions.AnoInvalidoException;
-import excepitions.ListaClienteVaziaException;
-import excepitions.ListaVeiculosVaziaException;
-import excepitions.ValorDiariaException;
-import excepitions.VeiculoInexistenteException;
+import exceptions.AnoInvalidoException;
+import exceptions.ListaClienteVaziaException;
+import exceptions.ListaVeiculosVaziaException;
+import exceptions.ValorDiariaException;
+import exceptions.VeiculoInexistenteException;
 import interfaces.IVeiculos;
 
 

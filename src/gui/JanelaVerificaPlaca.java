@@ -15,8 +15,8 @@ import javax.swing.JPanel;
 
 import cadastro.CadClientes;
 import cadastro.CadVeiculo;
-import excepitions.PlacaInvalidaException;
-import excepitions.VeiculoInexistenteException;
+import exceptions.PlacaInvalidaException;
+import exceptions.VeiculoInexistenteException;
 
 public class JanelaVerificaPlaca extends JFrame implements ActionListener {
 	private JPanel pnlCabecalho;

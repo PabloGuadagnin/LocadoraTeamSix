@@ -1,7 +1,7 @@
 package cadastro;
 import java.util.InputMismatchException;
 
-import excepitions.CpfInvalidoException;
+import exceptions.CpfInvalidoException;
 
 public class ValidaCPF {
 

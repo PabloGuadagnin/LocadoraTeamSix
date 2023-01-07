@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import cadastro.CadClientes;
 import construtores.Cliente;
-import excepitions.CampoObrigatorioException;
-import excepitions.CnhInvalidaException;
-import excepitions.NomeInvalidoException;
+import exceptions.CampoObrigatorioException;
+import exceptions.CnhInvalidaException;
+import exceptions.NomeInvalidoException;
 
 public class JanelaCadClientes extends JFrame implements ActionListener{
 	
@@ -182,7 +182,7 @@ public class JanelaCadClientes extends JFrame implements ActionListener{
 	public void actionPerformed (ActionEvent ev) {
 		if(ev.getSource() == this.btnSalvar) {
 			try {
-				if(verificarCamposObrigatorios(txtNome.getText(),txtCnh.getText())) {
+				if(cadClientes.verificarCamposObrigatorios(txtNome.getText(),txtCnh.getText())) {
 					Cliente cliente = new Cliente (txtNome.getText(), txtCpf.getText(), txtCnh.getText(),
 							txtTelefone.getText(), txtRua.getText(), txtNumero.getText(),txtComplemento.getText(),
 							txtBairro.getText(),txtCidade.getText(),txtCep.getText());
@@ -250,21 +250,5 @@ public class JanelaCadClientes extends JFrame implements ActionListener{
 	
 	public void limparAoFechar() {
 		txtCpf.setText("");
-	}
-	
-	public boolean verificarCamposObrigatorios(String nome, String cnh) throws CampoObrigatorioException, CnhInvalidaException, NomeInvalidoException {
-		if (nome.isBlank() || cnh.isBlank()) {
-			throw new CampoObrigatorioException();
-		}
-		
-		if (cnh.contains(" ")) {
-			throw new CnhInvalidaException();
-		}
-		
-		if (!nome.matches("[a-zA-Z\s]+")) {
-			throw new NomeInvalidoException();
-		}
-			
-		return true;
 	}
 }

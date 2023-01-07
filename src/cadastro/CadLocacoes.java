@@ -6,13 +6,13 @@ import java.util.Date;
 import java.util.LinkedList;
 
 import construtores.Locacao;
-import excepitions.DataInvalidaException;
-import excepitions.ListaLocacoesVaziaException;
-import excepitions.ListaVeiculosVaziaException;
-import excepitions.SemLocacoesNoPeriodoException;
-import excepitions.SemLocacoesParaClienteException;
-import excepitions.SemLocacoesParaVeiculoException;
-import excepitions.VeiculoIndisponivelException;
+import exceptions.DataInvalidaException;
+import exceptions.ListaLocacoesVaziaException;
+import exceptions.ListaVeiculosVaziaException;
+import exceptions.SemLocacoesNoPeriodoException;
+import exceptions.SemLocacoesParaClienteException;
+import exceptions.SemLocacoesParaVeiculoException;
+import exceptions.VeiculoIndisponivelException;
 import interfaces.ILocacoes;
 
 public class CadLocacoes implements ILocacoes{

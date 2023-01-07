@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import cadastro.CadClientes;
 import cadastro.CadLocacoes;
 import cadastro.CadVeiculo;
-import excepitions.VeiculoInexistenteException;
+import exceptions.VeiculoInexistenteException;
 
 public class JanelaPesquisaPlaca extends JFrame implements ActionListener {
 	private JPanel pnlCabecalho;

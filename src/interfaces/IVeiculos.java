@@ -1,7 +1,7 @@
 package interfaces;
 import app.*;
 import construtores.Veiculo;
-import excepitions.VeiculoInexistenteException;
+import exceptions.VeiculoInexistenteException;
 /**
  * Interface que permite a manipulação de um conjunto de veículos.
  * @author Aline

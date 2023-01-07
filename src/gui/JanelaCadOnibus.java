@@ -17,8 +17,8 @@ import javax.swing.JPanel;
 
 import cadastro.CadVeiculo;
 import construtores.Onibus;
-import excepitions.AnoInvalidoException;
-import excepitions.ValorDiariaException;
+import exceptions.AnoInvalidoException;
+import exceptions.ValorDiariaException;
 
 public class JanelaCadOnibus extends JFrame implements ActionListener{
 
